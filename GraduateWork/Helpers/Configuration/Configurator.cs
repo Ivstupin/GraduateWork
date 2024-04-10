@@ -38,7 +38,7 @@ namespace GraduateWork.Helpers.Configuration
                 var child = Configuration.GetSection("AppSettings");
 
                 appSettings.URL = child["URL"];
-                appSettings.Username = child["Username"];
+                appSettings.Email = child["Email"];
                 appSettings.Password = child["Password"];
 
                 return appSettings;

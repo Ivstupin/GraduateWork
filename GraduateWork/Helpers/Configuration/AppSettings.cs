@@ -1,5 +1,4 @@
-﻿
-namespace GraduateWork.Helpers.Configuration;
+﻿namespace GraduateWork.Helpers.Configuration;
 
 public class AppSettings
 {
