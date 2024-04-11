@@ -11,11 +11,16 @@ namespace GraduateWork.Tests
         public void PopupVisible()
         {
             UserSteps userSteps = new(Driver);
-            ProjectsPage projectsPage = userSteps.LoginByCorrect_User();
+           ProjectsPage projectsPage = userSteps.LoginByCorrect_User();
             //Thread.Sleep(5000);
-            Assert.That(projectsPage.IsPageOpened);
-            Assert.That(projectsPage.IsPopupVisible);
-            Thread.Sleep(5000);
+           Assert.That(projectsPage.IsPageOpened);
+
+            projectsPage.MoveToPopupMessage(); Thread.Sleep(15000);
+            
+            Assert.That(projectsPage.IsPopupVisible()) ;
+            // else(projectsPage.)
+            //projectsPage.PopupMessage.
+            Thread.Sleep(15000);
         }
     }
 }
