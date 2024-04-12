@@ -1,6 +1,4 @@
-﻿using GraduateWork.Tests;
-using GraduateWork.Helpers.Configuration;
-using GraduateWork.Pages;
+﻿using GraduateWork.Pages;
 using GraduateWork.Steps;
 
 namespace GraduateWork.Tests
@@ -8,19 +6,13 @@ namespace GraduateWork.Tests
     public class PopupTest : BaseTest
     {
         [Test]
-        public void PopupVisible()
+        public void PopupVisiblePopupTest()
         {
-            UserSteps userSteps = new(Driver);
+           UserSteps userSteps = new(Driver);
            ProjectsPage projectsPage = userSteps.LoginByCorrect_User();
-            //Thread.Sleep(5000);
            Assert.That(projectsPage.IsPageOpened);
-
-            projectsPage.MoveToPopupMessage(); Thread.Sleep(15000);
-            
-            Assert.That(projectsPage.IsPopupVisible()) ;
-            // else(projectsPage.)
-            //projectsPage.PopupMessage.
-            Thread.Sleep(15000);
+           projectsPage.MoveToPopupMessage(); 
+           Assert.That(projectsPage.IsPopupVisible);
         }
     }
 }

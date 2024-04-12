@@ -23,13 +23,13 @@ public class UserSteps : BaseSteps
         return new ProjectsPage(Driver);
     }
 
-    //public ProductsPage LoginByProblem_user()
-    //{
-    //    _loginPage.UserNameInput.SendKeys(problem_User);
-    //    _loginPage.PswInput.SendKeys(PswForAllUsers);
-    //    _loginPage.LoginInButton.Click();
-    //    return new ProductsPage(Driver);
-    //}
+    public LoginPage LoginByWrong_PSW()
+    {
+        loginPage.UserEmailInput.SendKeys(Configurator.AppSettings.Email);
+        loginPage.PswInput.SendKeys(Configurator.AppSettings.Password + "wrong_psw");
+        loginPage.LoginInButton.Click();
+        return loginPage;
+    }
 
 
     //public ProductsPage LoginByPerformance_Glitch_User()

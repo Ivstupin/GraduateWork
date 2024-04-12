@@ -17,7 +17,7 @@ namespace GraduateWork.Pages
         private static readonly By TrialBy = By.CssSelector("[class='navbar__trial__button']"); // название страницы Projects 
         private static readonly By TitleLabelBy = By.XPath("//div[contains(text(),'Projects')]"); // название страницы Projects 
 
-        private static readonly By AddProjectButtonBy = By.XPath("//button[contains(text(),'Project')]"); //селектор кнопки добавить проект
+        private static readonly By PlusProjectButtonBy = By.XPath("//button[contains(text(),'Project')]"); //селектор кнопки добавить проект
                                                                                                           //private static readonly By RemoveButtonBy = By.XPath("//*[contains(text(),'Remove')]"); //селектор кнопки удалить из тележки
                                                                                                           //private static readonly By ShoppingCartButtonBy = By.CssSelector("[class='shopping_cart_link']"); // селектор ссылки на страницу с тележкой 
                                                                                                           //private static readonly By ShoppingCartBadgeBy = By.CssSelector("[class='shopping_cart_badge']"); //бэйдж с количеством товаров в тележке
@@ -50,7 +50,7 @@ namespace GraduateWork.Pages
         // Атомарные Методы
         public IWebElement TitleLabel => WaitsHelper.WaitForExists(TitleLabelBy); // название страницы Projects 
         public IWebElement PopupMessage => WaitsHelper.WaitForExists(PopupMessageBy);  //всплывающее окно
-        public IWebElement _AddProjectButton => WaitsHelper.WaitForExists(AddProjectButtonBy);// // кнопка добавить проект
+        public IWebElement _PlusProjectButton => WaitsHelper.WaitForExists(PlusProjectButtonBy);// // кнопка добавить проект
                                                                                               // public IWebElement ShoppingCartBadge => WaitsHelper.WaitForExists(ShoppingCartBadgeBy);//бэйдж с количеством товаров в тележке
                                                                                               // public IWebElement ShoppingCartButton => WaitsHelper.WaitForExists(ShoppingCartButtonBy); //  кнопка со ссылкой на страницу с тележкой 
                                                                                               // public IWebElement NameProductsTitle => WaitsHelper.WaitForExists(NameProductsTitleBy); // заголовок товара
@@ -85,10 +85,10 @@ namespace GraduateWork.Pages
             foreach (var msg in allPopupMessage) //перебор всех всплывающих сообщений
             {
                 actions
-                .MoveToElement(msg)
-            .Build()
-            .Perform();
+                    .MoveToElement(msg)
+                    .Build()
+                    .Perform();
             }
-        }
+       }
     }
 }

@@ -1,25 +1,25 @@
 ﻿using GraduateWork.Helpers;
 using GraduateWork.Pages;
 using OpenQA.Selenium;
-using System.Reflection;
+using OpenQA.Selenium.Interactions;
 
 namespace GraduateWork.Steps;
 
-public class ActionsSteps : BaseSteps
+public class NavigationsSteps : BaseSteps
 {
     public AddProjectPage addProjectPage;
     public ProjectsPage projectsPage;
     public ProjectsOverviewPage projectsOverviewPage;
     public ProjectsAdminPage projectsAdminPage;
     public RepositoryPage repositoryPage;
-    public ActionsSteps(IWebDriver driver) : base(driver)
+    public NavigationsSteps(IWebDriver driver) : base(driver)
     {
         addProjectPage = new AddProjectPage(Driver);
         
         projectsOverviewPage = new ProjectsOverviewPage(Driver);
         projectsAdminPage = new ProjectsAdminPage(Driver);
-        projectsPage = new ProjectsPage(Driver);
-        repositoryPage = new RepositoryPage(Driver);
+        //projectsPage = new ProjectsPage(Driver);
+         repositoryPage = new RepositoryPage(Driver);
     }
 
     /// <summary>
@@ -53,13 +53,6 @@ public class ActionsSteps : BaseSteps
         return addProjectPage;
     }
 
-    public RepositoryPage NameInputFieldAddTestCase(string values)
-    {
-        repositoryPage.NameInputField.Click();
-        repositoryPage.NameInputField.Clear();
-        repositoryPage.NameInputField.SendKeys(values);
-        return repositoryPage;
-    }
     /// <summary>
     /// на странице AddProjectPage заполняем поле для ввода Name
     /// </summary>
@@ -73,12 +66,12 @@ public class ActionsSteps : BaseSteps
     /// <summary>
     /// на странице AddProjectPage заполняем поле для ввода Name
     /// </summary>
-    //public ProjectsAdminPage ManageProjectsButtonClick()
-    //{
-    //    projectsOverviewPage.ManageProjectsButtonLink.Click();
+    public ProjectsAdminPage ManageProjectsButtonClick()
+    {
+        projectsOverviewPage.ManageProjectsButtonLink.Click();
 
-    //    return new ProjectsAdminPage(Driver);
-    //}
+        return new ProjectsAdminPage(Driver);
+    }
 
     /// <summary>
     /// на странице AddProjectPage заполняем поле для ввода Name
@@ -99,30 +92,7 @@ public class ActionsSteps : BaseSteps
 
         return new RepositoryPage(Driver);
     }
-    public RepositoryPage AddTestCaseButtonClick()
-    {
-        repositoryPage.AddTestCaseButton.Click();
-        return repositoryPage;
-    }
 
-    public RepositoryPage UploadFile()
-    {
-        RepositoryPage repositoryPage = new RepositoryPage(Driver);
-
-        
-        string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-       
-        string filePath = Path.Combine(assemblyPath, "Resources", "cat_time.jpg");
-
-        repositoryPage.ChooseFilesFileUpload.SendKeys(filePath);
-
-        // Thread.Sleep(10000);
-        if (repositoryPage.ImageUploaded.Displayed)
-        { repositoryPage.AddCaseButton.Click(); }
-        else throw new Exception("Файл не загружен");
-        //Thread.Sleep(10000);
-        return repositoryPage;
-    }
 
 
 }

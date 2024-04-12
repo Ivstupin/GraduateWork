@@ -12,8 +12,9 @@ namespace GraduateWork.Pages
        private static readonly By TitleLabelSummaryBy = By.XPath("//*[contains(text(),'Summary')]"); // название поля Summary 
        private static readonly By SummaryInputFieldBy = By.XPath("//*/textarea"); //поле ввода Summary
        private static readonly By CounterBy = By.ClassName("maxlength-counter__counter"); //счётчик введённых символов в поле Summary
-       private static readonly By NameInputFieldBy = By.CssSelector("[data-target='name']"); //поле ввода Name
-       private static readonly By AddProjectButtonBy = By.CssSelector("[data-target='submitButton']"); //бэйдж с количеством товаров в тележке
+       private static readonly By NameInputFieldBy = By.CssSelector("[placeholder='Project name']");
+        private static readonly By NameLabelBy = By.XPath("//*[contains(text(),'Name')]");
+        private static readonly By AddProjectButtonBy = By.CssSelector("[data-target='submitButton']"); //бэйдж с количеством товаров в тележке
                                                                                              // private static readonly By DropdownNameBy = By.CssSelector("[class='product_sort_container']"); // dropdown Name (A to Z)
                                                                                              //private static readonly By NameProductsTitleBy = By.CssSelector("[class~='inventory_item_name']"); //селектор имени товара со ссылкой на страницу его описания
 
@@ -34,6 +35,13 @@ namespace GraduateWork.Pages
             return TitleLabelSummary.Text.Trim().Equals("Summary");
         }
 
+        public bool DialogueWindowIsDisplayed()
+        {
+            Console.WriteLine(NameLabel.Text.Trim());
+            
+            return NameLabel.Text.Trim().Equals("Name");
+        }
+
         /// <summary>
         /// сравнивает счётчик символов на странице
         /// </summary>
@@ -49,7 +57,7 @@ namespace GraduateWork.Pages
         public IWebElement Counter => WaitsHelper.WaitForExists(CounterBy);//
         public IWebElement NameInputField => WaitsHelper.WaitForExists(NameInputFieldBy);//
         public IWebElement _AddProjectButton => WaitsHelper.WaitForExists(AddProjectButtonBy); //  
-                                                                                                 // public IWebElement NameProductsTitle => WaitsHelper.WaitForExists(NameProductsTitleBy); // заголовок товара
+        public IWebElement NameLabel => WaitsHelper.WaitForExists(NameLabelBy);                                                                                     
 
 
         // public bool WaitForElementInvisibleRemoveButton => WaitsHelper.WaitForElementInvisible(RemoveButtonBy); //вернёт true если не найдёт selector кнопки Remove
@@ -67,7 +75,7 @@ namespace GraduateWork.Pages
         //{
         //  return false;
         //}
-        
+
 
     }
 }
