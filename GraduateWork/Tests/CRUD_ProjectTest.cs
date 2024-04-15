@@ -1,4 +1,5 @@
-﻿using GraduateWork.Pages;
+﻿using Allure.NUnit.Attributes;
+using GraduateWork.Pages;
 using GraduateWork.Steps;
 
 namespace GraduateWork.Tests
@@ -6,6 +7,7 @@ namespace GraduateWork.Tests
     public class CRUD_ProjectTest : BaseTest
     {
         [Test,Order(1)]
+        [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
         //[Ignore("Ignore this Test")]
         //[Repeat(2)]
         public void CreateProject_CRUD_ProjectTest()
@@ -34,6 +36,7 @@ namespace GraduateWork.Tests
         }
         
         [Test, Order(2)]
+        [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
         //[Ignore("Ignore this Test")]
         //[Repeat(1)]
         public void DeleteProject_CRUD_ProjectTest()

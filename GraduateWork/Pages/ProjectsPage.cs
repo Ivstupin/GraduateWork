@@ -13,6 +13,7 @@ namespace GraduateWork.Pages
         // Описание элементов
         private static readonly By DropDownListTourBy = By.XPath("//div[contains(text(),'Testmo trial started')]"); //выпадающий список Tour
         private static readonly By PopupMessageBy = By.CssSelector("[class='avatar__text__identifier']"); //всплывающее сообщение
+        private static readonly By PopupMessageDataContextBy = By.CssSelector("[data-content='Ivan Stupin']"); //всплывающее сообщение
 
         private static readonly By TrialBy = By.CssSelector("[class='navbar__trial__button']"); // название страницы Projects 
         private static readonly By TitleLabelBy = By.XPath("//div[contains(text(),'Projects')]"); // название страницы Projects 
@@ -42,16 +43,18 @@ namespace GraduateWork.Pages
 
         public bool IsPopupVisible()
         {
-            Console.WriteLine(PopupMessage.Text.Trim());
+            //Console.WriteLine(PopupMessageDataContext.Text);
             // PopupMessage.
-            return PopupMessage.Text.Trim().Equals("I");
+            return PopupMessageDataContext.Displayed;
+                //.Trim()
+                //.Equals("Ivan");
         }
 
         // Атомарные Методы
         public IWebElement TitleLabel => WaitsHelper.WaitForExists(TitleLabelBy); // название страницы Projects 
         public IWebElement PopupMessage => WaitsHelper.WaitForExists(PopupMessageBy);  //всплывающее окно
         public IWebElement _PlusProjectButton => WaitsHelper.WaitForExists(PlusProjectButtonBy);// // кнопка добавить проект
-                                                                                              // public IWebElement ShoppingCartBadge => WaitsHelper.WaitForExists(ShoppingCartBadgeBy);//бэйдж с количеством товаров в тележке
+        public IWebElement PopupMessageDataContext => WaitsHelper.WaitForExists(PopupMessageDataContextBy);//бэйдж с количеством товаров в тележке
                                                                                               // public IWebElement ShoppingCartButton => WaitsHelper.WaitForExists(ShoppingCartButtonBy); //  кнопка со ссылкой на страницу с тележкой 
                                                                                               // public IWebElement NameProductsTitle => WaitsHelper.WaitForExists(NameProductsTitleBy); // заголовок товара
                                                                                               //public void GG()
