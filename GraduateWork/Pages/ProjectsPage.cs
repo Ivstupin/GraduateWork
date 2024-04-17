@@ -19,7 +19,7 @@ namespace GraduateWork.Pages
         private static readonly By TitleLabelBy = By.XPath("//div[contains(text(),'Projects')]"); // название страницы Projects 
 
         private static readonly By PlusProjectButtonBy = By.XPath("//button[contains(text(),'Project')]"); //селектор кнопки добавить проект
-                                                                                                          //private static readonly By RemoveButtonBy = By.XPath("//*[contains(text(),'Remove')]"); //селектор кнопки удалить из тележки
+        private static readonly By ProjectBy = By.CssSelector("[href*='https://ivst.testmo.net/projects/view']"); //селектор существующего проекта
                                                                                                           //private static readonly By ShoppingCartButtonBy = By.CssSelector("[class='shopping_cart_link']"); // селектор ссылки на страницу с тележкой 
                                                                                                           //private static readonly By ShoppingCartBadgeBy = By.CssSelector("[class='shopping_cart_badge']"); //бэйдж с количеством товаров в тележке
                                                                                                           // private static readonly By DropdownNameBy = By.CssSelector("[class='product_sort_container']"); // dropdown Name (A to Z)
@@ -55,7 +55,7 @@ namespace GraduateWork.Pages
         public IWebElement PopupMessage => WaitsHelper.WaitForExists(PopupMessageBy);  //всплывающее окно
         public IWebElement _PlusProjectButton => WaitsHelper.WaitForExists(PlusProjectButtonBy);// // кнопка добавить проект
         public IWebElement PopupMessageDataContext => WaitsHelper.WaitForExists(PopupMessageDataContextBy);//бэйдж с количеством товаров в тележке
-                                                                                              // public IWebElement ShoppingCartButton => WaitsHelper.WaitForExists(ShoppingCartButtonBy); //  кнопка со ссылкой на страницу с тележкой 
+        public IWebElement Project => WaitsHelper.WaitForExists(ProjectBy); //  кнопка со ссылкой на страницу с тележкой 
                                                                                               // public IWebElement NameProductsTitle => WaitsHelper.WaitForExists(NameProductsTitleBy); // заголовок товара
                                                                                               //public void GG()
                                                                                               //{

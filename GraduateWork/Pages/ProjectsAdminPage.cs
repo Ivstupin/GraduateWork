@@ -1,6 +1,7 @@
 ﻿using GraduateWork.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using System.Data;
 
 namespace GraduateWork.Pages
 {
@@ -13,7 +14,7 @@ namespace GraduateWork.Pages
         private static readonly By DeleteButtonBy = By.CssSelector("[data-action='delete']"); // селектор ссылки на страницу с тележкой 
         private static readonly By CheckboxDeleteBy = By.CssSelector("[data-target='confirmationLabel']"); //бэйдж с количеством товаров в тележке
         private static readonly By DeleteProjectButtonBy = By.CssSelector("[data-target='deleteButton']"); // dropdown Name (A to Z)
-        //private static readonly By NameProductsTitleBy = By.CssSelector("[class~='inventory_item_name']"); //селектор имени товара со ссылкой на страницу его описания
+        private static readonly By RemovableProjectButtonBy = By.CssSelector("[class='deleted-entity']"); //селектор удаляемой сущности проекта (после удаления проекта)
 
         //public ThreeStripesMenuPage ThreeStripesMenuPage;
         public ProjectsAdminPage(IWebDriver driver, bool openPageByUrl = false) : base(driver, openPageByUrl)
@@ -43,12 +44,17 @@ namespace GraduateWork.Pages
 
         // Атомарные Методы
         public IWebElement _PlusProjectButton => WaitsHelper.WaitForExists(_PlusProjectButtonBy); // название страницы Projects 
-        public IWebElement DeleteButton => WaitsHelper.WaitForExists(DeleteButtonBy);  //всплывающее окно
+        public IWebElement DeleteButton => WaitsHelper.WaitForExists(DeleteButtonBy);  
         public IWebElement CheckboxDelete => WaitsHelper.WaitForExists(CheckboxDeleteBy);//
         public IWebElement DeleteProjectButton => WaitsHelper.WaitForExists(DeleteProjectButtonBy);//бэйдж с количеством товаров в тележке
-                                                                                                   // public IWebElement ShoppingCartButton => WaitsHelper.WaitForExists(ShoppingCartButtonBy); //  кнопка со ссылкой на страницу с тележкой 
-                                                                                                   // public IWebElement NameProductsTitle => WaitsHelper.WaitForExists(NameProductsTitleBy); // заголовок товара
 
+        public IWebElement RemovableProjectButton => WaitsHelper.WaitForExists(RemovableProjectButtonBy);
+        public bool WaitsInvisibleRemovableProjectButton => WaitsHelper.WaitForElementInvisible(RemovableProjectButton); //  кнопка со ссылкой на страницу с тележкой 
+                                                                                                                       // public IWebElement NameProductsTitle => WaitsHelper.WaitForExists(NameProductsTitleBy); // заголовок товара
+        public void RefreshPage()
+        {
+            Driver.Navigate().Refresh();
+        }
 
         // public bool WaitForElementInvisibleRemoveButton => WaitsHelper.WaitForElementInvisible(RemoveButtonBy); //вернёт true если не найдёт selector кнопки Remove
 
@@ -56,7 +62,7 @@ namespace GraduateWork.Pages
         /// вернёт TRUE если на странице ProductsPage не добавлен ни один товар в тележку
         /// </summary>
         //  public bool ProductsNotChoosen()
-        // {
+        //{ }
         // try
         //  {
         //return WaitForElementInvisibleRemoveButton;
@@ -65,7 +71,21 @@ namespace GraduateWork.Pages
         //{
         //  return false;
         //}
-        
-        //}
+        public bool IsProjectWasDelete()
+        {
+            try
+            {
+                while (RemovableProjectButton.Displayed)
+                {
+                    RefreshPage();
+                }
+                return false;
+            }
+            catch (WebDriverTimeoutException)
+            {
+                Console.WriteLine("Проект удалён");
+                return true;
+            }
+        }
     }
 }

@@ -18,7 +18,7 @@ public class NavigationsSteps : BaseSteps
         
         projectsOverviewPage = new ProjectsOverviewPage(Driver);
         projectsAdminPage = new ProjectsAdminPage(Driver);
-        //projectsPage = new ProjectsPage(Driver);
+        projectsPage = new ProjectsPage(Driver);
          repositoryPage = new RepositoryPage(Driver);
     }
 
@@ -84,6 +84,7 @@ public class NavigationsSteps : BaseSteps
             .Click();
         projectsAdminPage.DeleteProjectButton
             .Click();
+
         return projectsAdminPage;
     }
     public RepositoryPage ToRepositoryPage()
@@ -92,7 +93,12 @@ public class NavigationsSteps : BaseSteps
 
         return new RepositoryPage(Driver);
     }
+    public ProjectsOverviewPage ProjectLinkClick()
+    {
+        projectsPage.Project.Click();
 
+        return new ProjectsOverviewPage(Driver);
+    }
 
 
 }

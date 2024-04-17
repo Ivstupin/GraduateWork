@@ -1,12 +1,13 @@
 ﻿using Allure.NUnit.Attributes;
 using GraduateWork.Pages;
 using GraduateWork.Steps;
+using OpenQA.Selenium;
 
 namespace GraduateWork.Tests
 {
     public class CRUD_ProjectTest : BaseTest
     {
-        [Test,Order(1)]
+        [Test]
         [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
         //[Ignore("Ignore this Test")]
         //[Repeat(2)]
@@ -35,10 +36,10 @@ namespace GraduateWork.Tests
 
         }
         
-        [Test, Order(2)]
+        [Test]
         [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
         //[Ignore("Ignore this Test")]
-        //[Repeat(1)]
+        //[Repeat(20)]
         public void DeleteProject_CRUD_ProjectTest()
         {
             UserSteps userSteps = new(Driver);
@@ -49,12 +50,18 @@ namespace GraduateWork.Tests
 
             //ProjectsAdminPage projectsAdminPage = new(Driver);
            // ActionsSteps actionsSteps = new(Driver);
-            NavigationsSteps navigateSteps = new(Driver);
-           
-            ProjectsAdminPage projectsAdminPage = navigateSteps.DeleteProject();
+            NavigationsSteps navigationsSteps = new(Driver);
+            ProjectsOverviewPage projectsOverviewPage = navigationsSteps.ProjectLinkClick();
+            ProjectsAdminPage projectsAdminPage = navigationsSteps.ManageProjectsButtonClick();
+            navigationsSteps.DeleteProject();
+            Assert.Multiple(() =>
+            {
+                Assert.That(projectsAdminPage.RemovableProjectButton.Displayed);
+                Assert.That(projectsAdminPage.IsProjectWasDelete());
+            });
             
-           //actionsSteps.DeleteProject();
-            //Thread.Sleep(10000);
+            //actionsSteps.DeleteProject();
+            //Thread.Sleep(40000);
         }
     }
 }
