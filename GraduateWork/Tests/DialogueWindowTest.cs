@@ -14,7 +14,7 @@ namespace GraduateWork.Tests
 
             ActionsSteps actionsSteps = new(Driver);
             AddProjectPage addProjectPage = actionsSteps.PlusProjectButtonClick(); //клик по кнопке Project
-           // Assert.That(addProjectPage.IsPageOpened); //страница addProjectPage открыта
+            Assert.That(addProjectPage.IsPageOpened); //страница addProjectPage открыта
             Assert.That(addProjectPage.DialogueWindowIsDisplayed);
         }
     }

@@ -33,44 +33,19 @@ namespace GraduateWork.Pages
             return _PlusProjectButton.Text.Trim().Equals("Project");
         }
 
-        /// <summary>
-        /// сравнивает счётчик символов на странице
-        /// </summary>
-        //public bool CounterValue(string counter)
-        //{
-        //    Console.WriteLine(Counter.Text.Trim());
-        //    return Counter.Text.Trim().Equals(counter);
-        //}
-
         // Атомарные Методы
-        public IWebElement _PlusProjectButton => WaitsHelper.WaitForExists(_PlusProjectButtonBy); // название страницы Projects 
-        public IWebElement DeleteButton => WaitsHelper.WaitForExists(DeleteButtonBy);  
+        public IWebElement _PlusProjectButton => WaitsHelper.WaitForExists(_PlusProjectButtonBy); // 
+        public IWebElement DeleteButton => WaitsHelper.WaitForExists(DeleteButtonBy);
         public IWebElement CheckboxDelete => WaitsHelper.WaitForExists(CheckboxDeleteBy);//
-        public IWebElement DeleteProjectButton => WaitsHelper.WaitForExists(DeleteProjectButtonBy);//бэйдж с количеством товаров в тележке
-
+        public IWebElement DeleteProjectButton => WaitsHelper.WaitForExists(DeleteProjectButtonBy);//
         public IWebElement RemovableProjectButton => WaitsHelper.WaitForExists(RemovableProjectButtonBy);
-        public bool WaitsInvisibleRemovableProjectButton => WaitsHelper.WaitForElementInvisible(RemovableProjectButton); //  кнопка со ссылкой на страницу с тележкой 
-                                                                                                                       // public IWebElement NameProductsTitle => WaitsHelper.WaitForExists(NameProductsTitleBy); // заголовок товара
+        public bool WaitsInvisibleRemovableProjectButton => WaitsHelper.WaitForElementInvisible(RemovableProjectButton); // 
+                                                                                                                      
         public void RefreshPage()
         {
             Driver.Navigate().Refresh();
         }
 
-        // public bool WaitForElementInvisibleRemoveButton => WaitsHelper.WaitForElementInvisible(RemoveButtonBy); //вернёт true если не найдёт selector кнопки Remove
-
-        /// <summary>
-        /// вернёт TRUE если на странице ProductsPage не добавлен ни один товар в тележку
-        /// </summary>
-        //  public bool ProductsNotChoosen()
-        //{ }
-        // try
-        //  {
-        //return WaitForElementInvisibleRemoveButton;
-        // }
-        // catch (WebDriverTimeoutException)
-        //{
-        //  return false;
-        //}
         public bool IsProjectWasDelete()
         {
             try
@@ -87,5 +62,7 @@ namespace GraduateWork.Pages
                 return true;
             }
         }
+
+       
     }
 }

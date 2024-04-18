@@ -1,7 +1,5 @@
 ﻿using GraduateWork.Helpers;
-using GraduateWork.Pages;
 using OpenQA.Selenium;
-//using GraduateWork.Steps;
 
 namespace GraduateWork.Pages
 {
@@ -10,7 +8,6 @@ namespace GraduateWork.Pages
         private static string END_POINT = "";
 
         // Описание элементов
-        //private static readonly By LoginLogoBy = By.CssSelector("[class='login_logo']"); //лого Swag Labs
         private static readonly By UserEmailInputBy = By.Name("email");   // поле ввода Email
         private static readonly By PswInputBy = By.CssSelector("[type='password']");          // поле ввода Password
         private static readonly By LoginInButtonBy = By.CssSelector("[type='submit']"); // кнопка логин 
@@ -37,7 +34,6 @@ namespace GraduateWork.Pages
         public IWebElement LoginInButton => WaitsHelper.WaitForExists(LoginInButtonBy);
         public IWebElement ErrorText => WaitsHelper.WaitForExists(ErrorBy);
 
-        //Driver.SwitchTo().Frame
         public bool ErrorTextIsVisible()
         {
             Console.WriteLine(ErrorText.Text.Trim());

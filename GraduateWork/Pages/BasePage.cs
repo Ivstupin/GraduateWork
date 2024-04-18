@@ -1,8 +1,6 @@
 ﻿using GraduateWork.Helpers.Configuration;
 using GraduateWork.Helpers;
 using OpenQA.Selenium;
-//using GraduateWork.Helpers;
-//using GraduateWork.Helpers.Configuration;
 
 namespace GraduateWork.Pages;
 

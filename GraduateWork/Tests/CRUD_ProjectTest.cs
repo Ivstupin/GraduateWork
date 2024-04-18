@@ -23,45 +23,34 @@ namespace GraduateWork.Tests
 
             actionsSteps.InputValuesInNameInputField("Тестовый проект");
             actionsSteps.InputValuesInSummaryInputField("Тестовое описание");
-            //Thread.Sleep(10000);
+            
             ProjectsOverviewPage projectsOverviewPage = actionsSteps.AddProjectButtonClick();
-            //Thread.Sleep(10000);
             Assert.That(projectsOverviewPage.IsPageOpened); //страница addProjectPage открыта
 
-            NavigationsSteps navigationsSteps = new(Driver);
-            ProjectsAdminPage projectsAdminPage = navigationsSteps.ManageProjectsButtonClick();
+            ProjectsAdminPage projectsAdminPage = actionsSteps.ManageProjectsButtonClick();
+            
             Assert.That(projectsAdminPage.IsPageOpened);
-
-            //Thread.Sleep(10000);
-
+           
         }
         
         [Test]
         [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
         //[Ignore("Ignore this Test")]
-        //[Repeat(20)]
+        //[Repeat(10)]
         public void DeleteProject_CRUD_ProjectTest()
         {
             UserSteps userSteps = new(Driver);
             ProjectsPage projectsPage = userSteps.LoginByCorrect_User(); //логин
             Assert.That(projectsPage.IsPageOpened); //страница projectsPage открыта
-
-            //ActionsSteps actionsSteps = new(Driver);
-
-            //ProjectsAdminPage projectsAdminPage = new(Driver);
-           // ActionsSteps actionsSteps = new(Driver);
-            NavigationsSteps navigationsSteps = new(Driver);
-            ProjectsOverviewPage projectsOverviewPage = navigationsSteps.ProjectLinkClick();
-            ProjectsAdminPage projectsAdminPage = navigationsSteps.ManageProjectsButtonClick();
-            navigationsSteps.DeleteProject();
+            ActionsSteps actionsSteps = new(Driver);
+            ProjectsOverviewPage projectsOverviewPage = actionsSteps.ProjectLinkClick();
+            ProjectsAdminPage projectsAdminPage = actionsSteps.ManageProjectsButtonClick();
+            actionsSteps.DeleteProject();
             Assert.Multiple(() =>
             {
                 Assert.That(projectsAdminPage.RemovableProjectButton.Displayed);
                 Assert.That(projectsAdminPage.IsProjectWasDelete());
             });
-            
-            //actionsSteps.DeleteProject();
-            //Thread.Sleep(40000);
         }
     }
 }

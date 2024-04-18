@@ -15,7 +15,6 @@ public class ActionsSteps : BaseSteps
     public ActionsSteps(IWebDriver driver) : base(driver)
     {
         addProjectPage = new AddProjectPage(Driver);
-        
         projectsOverviewPage = new ProjectsOverviewPage(Driver);
         projectsAdminPage = new ProjectsAdminPage(Driver);
         projectsPage = new ProjectsPage(Driver);
@@ -53,6 +52,9 @@ public class ActionsSteps : BaseSteps
         return addProjectPage;
     }
 
+    /// <summary>
+    /// на странице RepositoryPage заполняем поле ввода Name при создании тест-кейса
+    /// </summary>
     public RepositoryPage NameInputFieldAddTestCase(string values)
     {
         repositoryPage.NameInputField.Click();
@@ -60,8 +62,9 @@ public class ActionsSteps : BaseSteps
         repositoryPage.NameInputField.SendKeys(values);
         return repositoryPage;
     }
+
     /// <summary>
-    /// на странице AddProjectPage заполняем поле для ввода Name
+    /// на странице AddProjectPage клик по AddProjectButton с переходом в ProjectsOverviewPage
     /// </summary>
     public ProjectsOverviewPage AddProjectButtonClick()
     {
@@ -71,17 +74,7 @@ public class ActionsSteps : BaseSteps
     }
 
     /// <summary>
-    /// на странице AddProjectPage заполняем поле для ввода Name
-    /// </summary>
-    //public ProjectsAdminPage ManageProjectsButtonClick()
-    //{
-    //    projectsOverviewPage.ManageProjectsButtonLink.Click();
-
-    //    return new ProjectsAdminPage(Driver);
-    //}
-
-    /// <summary>
-    /// на странице AddProjectPage заполняем поле для ввода Name
+    /// на странице ProjectsAdminPage удаляем проект
     /// </summary>
     public ProjectsAdminPage DeleteProject()
     {
@@ -93,39 +86,65 @@ public class ActionsSteps : BaseSteps
             .Click();
         return projectsAdminPage;
     }
+
+    /// <summary>
+    /// на странице projectsOverviewPage переходим в репозиторий
+    /// </summary>
     public RepositoryPage ToRepositoryPage()
     {
         projectsOverviewPage.RepositoryButton.Click();
 
         return new RepositoryPage(Driver);
     }
+
+    // <summary>
+    /// на странице RepositoryPage добавиить тест-кейс
+    /// </summary>
     public RepositoryPage AddTestCaseButtonClick()
     {
         repositoryPage.AddTestCaseButton.Click();
         return repositoryPage;
     }
 
+    // <summary>
+    /// при создании тест-кейса загружаем картинку с котом во вложения
+    /// </summary>
     public RepositoryPage UploadFile()
     {
         RepositoryPage repositoryPage = new RepositoryPage(Driver);
 
-        
         string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
        
         string filePath = Path.Combine(assemblyPath, "Resources", "cat_time.jpg");
 
         repositoryPage.ChooseFilesFileUpload.SendKeys(filePath);
-
-        // Thread.Sleep(10000);
+        
         if (repositoryPage.ImageUploaded.Displayed)
         { repositoryPage.AddCaseButton.Click(); }
         else throw new Exception("Файл не загружен");
-        //Thread.Sleep(10000);
+        
         return repositoryPage;
     }
+    /// <summary>
+    /// со стр projectsOverviewPage переходим в ProjectsAdminPage по клику
+    /// </summary>
+    public ProjectsAdminPage ManageProjectsButtonClick()
+    {
+        projectsOverviewPage.ManageProjectsButtonLink.Click();
 
+        return new ProjectsAdminPage(Driver);
+    }
 
+    /// <summary>
+    /// клик по созданному проекту на странице projectsPage с переходом на ProjectsOverviewPage
+    /// </summary>
+    public ProjectsOverviewPage ProjectLinkClick()
+    {
+        projectsPage.Project.Click();
 
+        return new ProjectsOverviewPage(Driver);
+    }
+    
 }
 
 
