@@ -22,10 +22,12 @@ namespace GraduateWork.Tests.API_Tests
 
             var options = new RestClientOptions(BaseRestUri)
             {
-                Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator("testmo_api_eyJpdiI6ImxCQWNsUFlYbXo4bHRwdUhDUENsbHc9PSIsInZhbHVlIjoidlFJMkFCa3BHRzZlazVBaEYzZUh6OUI3aGR4M2Yya1ZJeG8vclR0eDJjND0iLCJtYWMiOiJhNjg3ZTJiNGRmNzllNmUyODcyMTgyZGVjN2QxZmJmZjg2NDhlYzAxNjY1NzZkOTM5ZTEwZjUzNTFkMDEyMmQzIiwidGFnIjoiIn0=")
+                Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator("")
             };
+
             var client = new RestClient(options);
-            var request = new RestRequest(endpoint);
+            var request = new RestRequest(endpoint)
+                .AddHeader("Bearer","testmo_api_eyJpdiI6ImxCQWNsUFlYbXo4bHRwdUhDUENsbHc9PSIsInZhbHVlIjoidlFJMkFCa3BHRzZlazVBaEYzZUh6OUI3aGR4M2Yya1ZJeG8vclR0eDJjND0iLCJtYWMiOiJhNjg3ZTJiNGRmNzllNmUyODcyMTgyZGVjN2QxZmJmZjg2NDhlYzAxNjY1NzZkOTM5ZTEwZjUzNTFkMDEyMmQzIiwidGFnIjoiIn0 =");
 
             var response = client.ExecuteGet(request);
             Logger.Info(response.Content);

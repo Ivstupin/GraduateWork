@@ -14,6 +14,7 @@
 	  <None Remove="appsettings.json" />
 	  <None Remove="NLog.config" />
 	  <None Remove="Resources\cat_time.jpg" />
+	  <None Remove="Resources\schema.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -29,10 +30,14 @@
 	  <Content Include="Resources\cat_time.jpg">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
+	  <Content Include="Resources\schema.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Allure.NUnit" Version="2.12.0" />
+		<PackageReference Include="Bogus" Version="35.5.0" />
 		<PackageReference Include="coverlet.collector" Version="6.0.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -42,6 +47,7 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+		<PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.15" />
 		<PackageReference Include="NLog" Version="5.2.8" />
 		<PackageReference Include="NLog.Schema" Version="5.2.8" />
 		<PackageReference Include="NUnit" Version="4.1.0" />
@@ -63,7 +69,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
+	  <Folder Include="Clients\" />
+	  <Folder Include="Fakers\" />
+	  <Folder Include="Services\" />
 	</ItemGroup>
 
 </Project>
