@@ -16,16 +16,16 @@ public class UserSteps : BaseSteps
     }
     public ProjectsPage LoginByCorrect_User()
     {
-        loginPage.UserEmailInput.SendKeys(Configurator.AppSettings.Email);
-        loginPage.PswInput.SendKeys(Configurator.AppSettings.Password);
+        loginPage.UserEmailInput.SendKeys(Configurator.Admin.Email);
+        loginPage.PswInput.SendKeys(Configurator.Admin.Password);
         loginPage.LoginInButton.Click();
         return new ProjectsPage(Driver);
     }
 
     public LoginPage LoginByWrong_PSW()
     {
-        loginPage.UserEmailInput.SendKeys(Configurator.AppSettings.Email);
-        loginPage.PswInput.SendKeys(Configurator.AppSettings.Password + "wrong_psw");
+        loginPage.UserEmailInput.SendKeys(Configurator.Admin.Email);
+        loginPage.PswInput.SendKeys(Configurator.Admin.Password + "wrong_psw");
         loginPage.LoginInButton.Click();
         return loginPage;
     }

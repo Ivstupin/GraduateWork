@@ -10,7 +10,7 @@ namespace GraduateWork.Pages
 
         // Описание элементов
 
-       private static readonly By AddTestCaseButtonBy = By.CssSelector("[data-target='repositories--index.nodataAddCaseButton']"); //поле ввода Summary
+       private static readonly By PlusCaseButtonBy = By.XPath("//*[contains(text(),'Case')]"); //поле ввода Summary
        private static readonly By ChooseFilesFileUploadBy = By.CssSelector("[type = 'file']"); //счётчик введённых символов в поле Summary
        private static readonly By AddCaseButtonBy = By.CssSelector("[data-target='submitButton']"); //
        private static readonly By NameInputFieldBy = By.CssSelector("[placeholder='Case name']"); // поле Name при создании тест кейса
@@ -28,11 +28,11 @@ namespace GraduateWork.Pages
         public override bool IsPageOpened()
         {
             Console.WriteLine(AddTestCaseButton.Text.Trim());
-            return AddTestCaseButton.Text.Trim().Equals("Add test case");
+            return AddTestCaseButton.Text.Trim().Equals("Case");
         }
 
         // Атомарные Методы
-        public IWebElement AddTestCaseButton => WaitsHelper.WaitForExists(AddTestCaseButtonBy); // 
+        public IWebElement AddTestCaseButton => WaitsHelper.WaitForExists(PlusCaseButtonBy); // 
         public IWebElement ChooseFilesFileUpload => WaitsHelper.WaitForExists(ChooseFilesFileUploadBy);  
         public IWebElement AddCaseButton => WaitsHelper.WaitForExists(AddCaseButtonBy);//
         public IWebElement NameInputField => WaitsHelper.WaitForExists(NameInputFieldBy);//

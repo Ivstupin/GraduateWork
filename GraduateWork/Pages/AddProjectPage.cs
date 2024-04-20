@@ -15,9 +15,10 @@ namespace GraduateWork.Pages
         private static readonly By NameInputFieldBy = By.CssSelector("[placeholder='Project name']");
         private static readonly By NameLabelBy = By.XPath("//*[contains(text(),'Name')]");
         private static readonly By AddProjectButtonBy = By.CssSelector("[data-target='submitButton']"); //бэйдж с количеством товаров в тележке
+
         public AddProjectPage(IWebDriver driver, bool openPageByUrl = false) : base(driver, openPageByUrl)
         {
-            // ThreeStripesMenuPage = new ThreeStripesMenuPage(Driver); //три точки меню слева вверху
+            
         }
 
         protected override string GetEndpoint()

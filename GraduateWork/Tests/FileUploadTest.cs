@@ -8,7 +8,7 @@ public class FileUploadTest : BaseTest
     [Test]
     [Description("Загрузка файла")]
     public void _FileUploadTest()
-    {
+    {// должен быть создан любой проект
         UserSteps userSteps = new(Driver);
         ProjectsPage projectsPage = userSteps.LoginByCorrect_User(); //логин
         Assert.That(projectsPage.IsPageOpened); //страница projectsPage открыта
@@ -20,7 +20,7 @@ public class FileUploadTest : BaseTest
         Assert.That(repositoryPage.IsPageOpened);
         
         actionsSteps.AddTestCaseButtonClick();
-        actionsSteps.NameInputFieldAddTestCase("TestC2ase3824"); //нужна реализация подбора уникальных значений, иначе не подгружает
+        actionsSteps.NameInputFieldAddTestCase("Upload_Cat"); 
         actionsSteps.UploadFile();
         Assert.That(repositoryPage.ImageUploaded.Displayed);
     }

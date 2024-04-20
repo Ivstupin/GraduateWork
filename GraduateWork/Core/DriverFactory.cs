@@ -18,10 +18,6 @@ public class DriverFactory
         chromeOptions.AddArguments("--disable-extensions");
         //chromeOptions.AddArguments("--headless");
 
-        //string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        //string pathForDownloadsByDefault = Path.Combine(assemblyPath, "Downloads");
-        //chromeOptions.AddUserProfilePreference("download.default_directory", pathForDownloadsByDefault);// включение опции - папка для скачивания по-умолчанию
-
         chromeOptions.SetLoggingPreference(LogType.Browser, LogLevel.All);
         chromeOptions.SetLoggingPreference(LogType.Driver, LogLevel.All);
 

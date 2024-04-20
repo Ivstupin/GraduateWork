@@ -69,9 +69,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Clients\" />
 	  <Folder Include="Fakers\" />
-	  <Folder Include="Services\" />
 	</ItemGroup>
 
 </Project>

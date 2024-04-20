@@ -106,7 +106,7 @@ public class ActionsSteps : BaseSteps
         return repositoryPage;
     }
 
-    // <summary>
+    /// <summary>
     /// при создании тест-кейса загружаем картинку с котом во вложения
     /// </summary>
     public RepositoryPage UploadFile()
@@ -120,7 +120,9 @@ public class ActionsSteps : BaseSteps
         repositoryPage.ChooseFilesFileUpload.SendKeys(filePath);
         
         if (repositoryPage.ImageUploaded.Displayed)
-        { repositoryPage.AddCaseButton.Click(); }
+        { 
+            repositoryPage.AddCaseButton.Click();
+        }
         else throw new Exception("Файл не загружен");
         
         return repositoryPage;
