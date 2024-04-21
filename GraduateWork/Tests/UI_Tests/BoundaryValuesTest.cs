@@ -1,9 +1,9 @@
 ﻿using GraduateWork.Pages;
 using GraduateWork.Steps;
 
-namespace GraduateWork.Tests
+namespace GraduateWork.Tests.UI_Tests
 {
-    public class BoundaryValuesTest : BaseTest
+    public class BoundaryValuesTest : BaseUITest
     {
         [Test]
         public void PositiveBoundaryValuesTest()
@@ -19,7 +19,7 @@ namespace GraduateWork.Tests
             // блок с проверкой ГЗ
             actionsSteps.InputValuesInSummaryInputField("dfhfdgdh6re5rujfthfjftghdb56u56....сорок"); //ввод 40 значений - середина диапазона 0-80
             Assert.That(addProjectPage.CounterValue("40/80")); // проверяем что совпадает счётчик введённых символов  
-            
+
             actionsSteps.InputValuesInSummaryInputField(""); //0
             Assert.That(addProjectPage.CounterValue("0/80"));
 
@@ -28,7 +28,7 @@ namespace GraduateWork.Tests
 
             actionsSteps.InputValuesInSummaryInputField("asfgdfh6u5yyfhgjg6gkj7gj5i67u75uu67uj666666666jtgygygjc63...........восемь_десят"); //80
             Assert.That(addProjectPage.CounterValue("80/80"));
-            
+
             actionsSteps.InputValuesInSummaryInputField("asfgdfh6u5yyfhgjg6gkj7gj5i67u75uu67uj666666666jtgygygjc63......семьдесят_девять"); //79
             Assert.That(addProjectPage.CounterValue("79/80"));
         }

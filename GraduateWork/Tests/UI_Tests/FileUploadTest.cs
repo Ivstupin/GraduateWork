@@ -1,9 +1,9 @@
 ﻿using GraduateWork.Pages;
 using GraduateWork.Steps;
 
-namespace GraduateWork.Tests;
+namespace GraduateWork.Tests.UI_Tests;
 
-public class FileUploadTest : BaseTest
+public class FileUploadTest : BaseUITest
 {
     [Test]
     [Description("Загрузка файла")]
@@ -15,12 +15,13 @@ public class FileUploadTest : BaseTest
 
         ActionsSteps actionsSteps = new(Driver);
         ProjectsOverviewPage projectsOverviewPage = actionsSteps.ProjectLinkClick();
-        Assert.That(projectsOverviewPage.IsPageOpened); 
+        Assert.That(projectsOverviewPage.IsPageOpened);
         RepositoryPage repositoryPage = actionsSteps.ToRepositoryPage();
-        Assert.That(repositoryPage.IsPageOpened);
-        
+        //Assert.That(repositoryPage.IsPageOpened);
+       // repositoryPage.IsProjectWasDelete(        //Assert.That(repositoryPage.IsPageOpened);
+        //repositoryPage.GetWaitsInvisibleRemovableProjectButton());
         actionsSteps.AddTestCaseButtonClick();
-        actionsSteps.NameInputFieldAddTestCase("Upload_Cat"); 
+        actionsSteps.NameInputFieldAddTestCase("Upload_Cat");
         actionsSteps.UploadFile();
         Assert.That(repositoryPage.ImageUploaded.Displayed);
     }

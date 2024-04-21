@@ -30,7 +30,7 @@ namespace GraduateWork.Pages
 
         // Атомарные Методы
         public IWebElement ManageProjectsButtonLink => WaitsHelper.WaitForExists(ManageProjectsButtonLinkBy); // название страницы Projects 
-        public IWebElement RepositoryButton => WaitsHelper.WaitForExists(RepositoryButtonBy);  //всплывающее окно
+        public IWebElement RepositoryButton => WaitsHelper.FluentWaitForElement(RepositoryButtonBy);  //всплывающее окно
        
     }
 }

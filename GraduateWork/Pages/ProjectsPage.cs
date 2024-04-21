@@ -51,16 +51,23 @@ namespace GraduateWork.Pages
         /// </summary>
         public void MoveToPopupMessage() 
         {
-            var allPopupMessage = WaitsHelper.WaitForAllVisibleElementsLocatedBy(PopupMessageBy); // вернёт коллекцию всех найденых на странице всплывающих сообщений
+            var allPopupMessage = WaitsHelper.FluentWaitForElement(PopupMessageBy); // вернёт коллекцию всех найденых на странице всплывающих сообщений
             var actions = new Actions(Driver);
-            
-            foreach (var msg in allPopupMessage) //перебор всех всплывающих сообщений
-            {
-                actions
-                    .MoveToElement(msg)
+
+            actions
+                    .MoveToElement(allPopupMessage)
                     .Build()
                     .Perform();
-            }
+
+
+            //foreach (var msg in allPopupMessage) //перебор всех всплывающих сообщений
+            //{
+            //    actions
+            //        .MoveToElement(msg)
+            //        .Build()
+            //        .Perform();
+            //}
+
         }
     }
 }

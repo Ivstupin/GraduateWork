@@ -1,9 +1,9 @@
 ﻿using GraduateWork.Pages;
 using GraduateWork.Steps;
 
-namespace GraduateWork.Tests;
+namespace GraduateWork.Tests.UI_Tests;
 
-public class LoginTest : BaseTest
+public class LoginTest : BaseUITest
 {
     [Test]
     public void Successfull_LoginTest()

@@ -1,9 +1,9 @@
 ﻿using GraduateWork.Pages;
 using GraduateWork.Steps;
 
-namespace GraduateWork.Tests
+namespace GraduateWork.Tests.UI_Tests
 {
-    public class DialogueWindowTest : BaseTest
+    public class DialogueWindowTest : BaseUITest
     {
         [Test]
         public void _DialogueWindowTest()

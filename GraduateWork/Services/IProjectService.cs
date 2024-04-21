@@ -6,9 +6,9 @@ namespace GraduateWork.Services;
 
 public interface IProjectService
 {
-    Task<Project> GetProject(string projectId);
+    Task<Project> GetProject();
     Task<Projects> GetProjects();
-    Task<Project> AddProject(Project project);
-    Task<Project> UpdateProject(Project project);
+    Task<Projects> GetAllAutomationRuns();
+     HttpStatusCode PostAutomationRun(AutomationRun automationRun);
     //HttpStatusCode GetProject(string projectId);
 }

@@ -3,14 +3,14 @@ using GraduateWork.Pages;
 using GraduateWork.Steps;
 using OpenQA.Selenium;
 
-namespace GraduateWork.Tests
+namespace GraduateWork.Tests.UI_Tests
 {
-    public class CRUD_ProjectTest : BaseTest
+    public class CRUD_ProjectTest : BaseUITest
     {
         [Test]
         [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
         //[Ignore("Ignore this Test")]
-        //[Repeat(2)]
+        [Repeat(3)]
         public void CreateProject_CRUD_ProjectTest()
         {
             UserSteps userSteps = new(Driver);
@@ -23,20 +23,20 @@ namespace GraduateWork.Tests
 
             actionsSteps.InputValuesInNameInputField("Тестовый проект");
             actionsSteps.InputValuesInSummaryInputField("Тестовое описание");
-            
+
             ProjectsOverviewPage projectsOverviewPage = actionsSteps.AddProjectButtonClick();
             Assert.That(projectsOverviewPage.IsPageOpened); //страница addProjectPage открыта
 
             ProjectsAdminPage projectsAdminPage = actionsSteps.ManageProjectsButtonClick();
-            
+
             Assert.That(projectsAdminPage.IsPageOpened);
-           
+
         }
-        
+
         [Test]
         [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
         //[Ignore("Ignore this Test")]
-        //[Repeat(10)]
+        //[Repeat(3)]
         public void DeleteProject_CRUD_ProjectTest()
         {
             UserSteps userSteps = new(Driver);

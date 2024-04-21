@@ -8,21 +8,21 @@ using Allure.Net.Commons;
 using System.Text;
 using NLog;
 
-namespace GraduateWork.Tests;
+namespace GraduateWork.Tests.UI_Tests;
 
 [Parallelizable(scope: ParallelScope.All)]
 [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
 [AllureNUnit]
-public class BaseTest
+public class BaseUITest
 {
     protected IWebDriver Driver { get; private set; }
     protected WaitsHelper WaitsHelper { get; private set; }
 
     // protected NavigationsSteps navigationsSteps;
-    protected static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     [OneTimeSetUp]
-    public static void SuiteSetup() 
+    public static void SuiteSetup()
     {
         //new NLogConfig().Config();
     }
@@ -56,7 +56,7 @@ public class BaseTest
                 //AllureApi.AddAttachment("data.txt", "text/plain", Encoding.UTF8.GetBytes("Content"));
             }
         }
-        catch (Exception) {throw;}
+        catch (Exception) { throw; }
         Driver.Quit();
     }
 }

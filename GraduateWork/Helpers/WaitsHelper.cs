@@ -11,7 +11,14 @@ public class WaitsHelper(IWebDriver driver, TimeSpan timeout)
 
     public IWebElement WaitForVisibilityLocatedBy(By locator)
     {
-        return _wait.Until(ExpectedConditions.ElementIsVisible(locator));
+        try
+        {
+            return _wait.Until(ExpectedConditions.ElementIsVisible(locator));
+        }
+        catch (WebDriverTimeoutException)
+        {
+            throw;
+        }
     }
 
     public ReadOnlyCollection<IWebElement> WaitForAllVisibleElementsLocatedBy(By locator)
@@ -66,7 +73,7 @@ public class WaitsHelper(IWebDriver driver, TimeSpan timeout)
         };
 
         fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-
+        fluentWait.IgnoreExceptionTypes(typeof(ElementNotInteractableException));
         // Использование
         return fluentWait.Until(_ => driver.FindElement(locator));
     }

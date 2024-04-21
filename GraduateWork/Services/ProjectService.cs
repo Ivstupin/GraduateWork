@@ -11,14 +11,14 @@ namespace GraduateWork.Services;
 public class ProjectService : IProjectService, IDisposable
 {
     private readonly RestClientExtended _client;
-    private readonly string projectId = "161";
+    private readonly string projectId = "189";
 
     public ProjectService(RestClientExtended client)
     {
         _client = client;
     }
 
-    public Task<Project> GetProject(string projectId)
+    public Task<Project> GetProject()
     {
         var request = new RestRequest("/api/v1/projects/{project_id}")
             .AddUrlSegment("project_id", projectId);
@@ -34,22 +34,22 @@ public class ProjectService : IProjectService, IDisposable
         return projects;
     }
 
-    public Task<Project> AddProject(Project project)
+    public Task<Projects> GetAllAutomationRuns()
     {
-        var request = new RestRequest("/api/v1/projects/161/automation/runs", Method.Post)
-            .AddUrlSegment("project_id", project.Id)
-            .AddJsonBody(project);
+        var request = new RestRequest("/api/v1/projects/{project_id}/automation/runs")
+            .AddUrlSegment("project_id", projectId);
+            //.AddJsonBody(project);
 
-        return _client.ExecuteAsync<Project>(request);
+        return _client.ExecuteAsync<Projects>(request);
     }
 
-    public Task<Project> UpdateProject(Project project)
+    public HttpStatusCode PostAutomationRun(AutomationRun automationRun)
     {
-        var request = new RestRequest("index.php?/api/v2/update_project/{project_id}", Method.Post)
-           .AddUrlSegment("project_id", project.Id)
-            .AddJsonBody(project);
+        var request = new RestRequest("/api/v1/projects/{project_id}/automation/runs", Method.Post)
+           .AddUrlSegment("project_id", projectId)
+            .AddJsonBody(automationRun);
 
-        return _client.ExecuteAsync<Project>(request);
+        return _client.ExecuteAsync(request).Result.StatusCode;
     }
 
     //public HttpStatusCode GetProject(string projectId)

@@ -1,9 +1,9 @@
 ﻿using GraduateWork.Pages;
 using GraduateWork.Steps;
 
-namespace GraduateWork.Tests;
+namespace GraduateWork.Tests.UI_Tests;
 
-public class FailedTest : BaseTest
+public class FailedTest : BaseUITest
 {
     [Test]
     public void Failed_LoginTest_Nlog()
@@ -15,7 +15,7 @@ public class FailedTest : BaseTest
         {
             Assert.That(projectsPage.IsPageOpened);
         }
-        catch (Exception ex) { Logger.Error (ex, "Логируем ошибку"); }
+        catch (Exception ex) { Logger.Error(ex, "Логируем ошибку"); }
     }
 
     [Test]

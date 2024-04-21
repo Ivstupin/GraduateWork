@@ -102,7 +102,9 @@ public class ActionsSteps : BaseSteps
     /// </summary>
     public RepositoryPage AddTestCaseButtonClick()
     {
+        
         repositoryPage.AddTestCaseButton.Click();
+        
         return repositoryPage;
     }
 

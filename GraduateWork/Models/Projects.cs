@@ -1,4 +1,5 @@
 ﻿
+
 using GraduateWork.Models;
 using System.Text.Json.Serialization;
 
@@ -12,5 +13,5 @@ public record Projects
     [JsonPropertyName("last_page")] public int Last_page { get; set; }
     [JsonPropertyName("per_page")] public int Per_page { get; set; }
     [JsonPropertyName("total")] public int Total { get; set; }
-    [JsonPropertyName("result")] public List<Project> Result { get; set; } = new();
+    [JsonPropertyName("result")] public Project[] Result { get; set; }
 }

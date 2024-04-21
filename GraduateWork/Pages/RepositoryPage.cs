@@ -30,13 +30,49 @@ namespace GraduateWork.Pages
             Console.WriteLine(AddTestCaseButton.Text.Trim());
             return AddTestCaseButton.Text.Trim().Equals("Case");
         }
+        
+
 
         // Атомарные Методы
-        public IWebElement AddTestCaseButton => WaitsHelper.WaitForExists(PlusCaseButtonBy); // 
+        public IWebElement AddTestCaseButton => WaitsHelper.FluentWaitForElement(PlusCaseButtonBy); // 
         public IWebElement ChooseFilesFileUpload => WaitsHelper.WaitForExists(ChooseFilesFileUploadBy);  
         public IWebElement AddCaseButton => WaitsHelper.WaitForExists(AddCaseButtonBy);//
         public IWebElement NameInputField => WaitsHelper.WaitForExists(NameInputFieldBy);//
         public IWebElement ImageUploaded => WaitsHelper.WaitForExists(ImageUploadedBy); //  
+
+
+
+        // public IWebElement RemovableProjectButton => WaitsHelper.WaitForExists(RemovableProjectButtonBy);
+        public IWebElement WaitsInvisibleRemovableProjectButton => WaitsHelper.WaitForVisibilityLocatedBy(PlusCaseButtonBy); // 
+
+        public void RefreshPage()
+        {
+            Driver.Navigate().Refresh();
+        }
+
+        public IWebElement GetWaitsInvisibleRemovableProjectButton()
+        {
+            return WaitsInvisibleRemovableProjectButton;
+        }
+
+        public bool IsProjectWasDelete(IWebElement waitsInvisibleRemovableProjectButton)
+        {
+            
+            try
+            {
+                while (waitsInvisibleRemovableProjectButton.Displayed)
+                {
+                    RefreshPage();
+                }
+                return true;
+            }
+            catch (WebDriverTimeoutException)
+            {
+                RefreshPage();
+                Console.WriteLine("Проект удалён");
+                return true;
+            }
+        }
 
     }
 }

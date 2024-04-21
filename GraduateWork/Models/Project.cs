@@ -7,7 +7,7 @@ namespace GraduateWork.Models;
 
 public record Project
 {
-   // [JsonPropertyName("result")] public List<Project> Result { get; set; } = new();
+    // [JsonPropertyName("result")] public List<Project> Result { get; set; } = new();
     [JsonPropertyName("id")] public int Id { get; set; }
     [JsonPropertyName("name")] public string? Name { get; set; }
     [JsonPropertyName("note")] public string? Note { get; set; }
@@ -27,9 +27,9 @@ public record Project
     [JsonPropertyName("automation_run_count")] public int Automation_run_count { get; set; }
     [JsonPropertyName("automation_run_active_count")] public int Automation_run_active_count { get; set; }
     [JsonPropertyName("automation_run_completed_count")] public int Automation_run_completed_count { get; set; }
-    [JsonPropertyName("created_at")] public DateTime? Created_at { get; set; }
-    [JsonPropertyName("created_by")] public int Created_by { get; set; }
-    [JsonPropertyName("updated_at")] public DateTime? Updated_at { get; set; }
-    [JsonPropertyName("updated_by")] public string? Updated_by { get; set; }
+    [JsonPropertyName("created_at")] public string? Created_at { get; set; }
+    [JsonPropertyName("created_by")] public int? Created_by { get; set; }
+    [JsonPropertyName("updated_at")] public string? Updated_at { get; set; }
+    [JsonPropertyName("updated_by")] public int? Updated_by { get; set; }
     [JsonPropertyName("completed_at")] public string? Completed_at { get; set; }
 }
