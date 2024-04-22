@@ -16,7 +16,7 @@ public class DriverFactory
         chromeOptions.AddArguments("--incognito");
         chromeOptions.AddArguments("--disable-gpu");
         chromeOptions.AddArguments("--disable-extensions");
-        //chromeOptions.AddArguments("--headless");
+        chromeOptions.AddArguments("--headless");
 
         //string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         //string pathForDownloadsByDefault = Path.Combine(assemblyPath, "Downloads");
