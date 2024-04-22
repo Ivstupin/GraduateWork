@@ -6,6 +6,8 @@
 trigger:
 - master
 
+continueOnError: true
+
 pool: LocalPool
 #  vmImage: 'windows-latest'
 
@@ -27,12 +29,15 @@ steps:
     projects: 'GraduateWork/GraduateWork.csproj'
 
 - task: PublishAllureReport@1
+  condition: always()
   displayName: Publish Report
   inputs:
     allureVersion: 2.27.0
     testResultsDir: GraduateWork\bin\Debug\net8.0\allure-results
 
 - task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
+   condition: always()
+   displayName: Publish Artifact
+   inputs:
+    targetPath: '$(Build.SourcesDirectory)\bin\Debug\net8.0\allure-report'
     publishLocation: 'pipeline'
