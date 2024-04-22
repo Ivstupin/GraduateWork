@@ -26,7 +26,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'GraduateWork/GraduateWork.csproj'
+    projects: 'GraduateWork\GraduateWork.csproj'
 
 - task: PublishAllureReport@1
   condition: always()
@@ -39,5 +39,5 @@ steps:
    condition: always()
    displayName: Publish Artifact
    inputs:
-    targetPath: '$(Build.SourcesDirectory)\bin\Debug\net8.0\allure-report'
+    targetPath: 'GraduateWork\bin\Debug\net8.0\allure-report'
     publishLocation: 'pipeline'
