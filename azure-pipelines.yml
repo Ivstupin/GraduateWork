@@ -20,7 +20,19 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+    
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     projects: 'GraduateWork/GraduateWork.csproj'
+
+- task: PublishAllureReport@1
+  displayName: Publish Report
+  inputs:
+    allureVersion: 2.27.0
+    testResultsDir: GraduateWork\bin\Debug\net8.0\allure-results
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'

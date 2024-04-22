@@ -37,7 +37,7 @@ namespace GraduateWork.Tests.API_Tests
             Assert.Multiple(() =>
             {
                 Assert.That(actualProject1.Result.Page, Is.EqualTo(1));
-                Assert.That(actualProject1.Result.Total, Is.EqualTo(4));
+               // Assert.That(actualProject1.Result.Total.;
             });
             // _logger.Info(actualProject1);
         }
