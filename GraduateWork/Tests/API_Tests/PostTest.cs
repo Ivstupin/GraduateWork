@@ -1,42 +1,30 @@
 ﻿using GraduateWork.Models;
-using GraduateWork.Services;
-using GraduateWork.Tests;
 using NLog;
-using GraduateWork.Models;
 using System.Net;
 
 namespace GraduateWork.Tests.API_Tests
 {
-    public class PostTest : BaseApiTest //AFE
+    public class PostTest : BaseApiTest 
     {
+        private AutomationRun _automationRun = new();
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        // private Project _project = new Project();
-
+        
         [Test]
-        [Order(1)]
         [Category("NFE")]
-        public void PostTest1()
+        public void PostAutomationRunsTest()
         {
-            // var actualProject = ProjectService!.AddProject();
+            var totalCntAutomationRuns = ProjectService!.GetAllAutomationRuns().Result.Total;   //получение значения перед выполнением POST 
+            
+            _automationRun = new AutomationRun
+            {
+                Name = "WP Test 1",
+                Source = "backend"
+            };
 
-            // Assert.That(actualProject.Result.Name, Is.EqualTo("4"));
-
-            // _logger.Info(actualProject.Result.ToString);
+            var postAutomationRun = ProjectService!.PostAutomationRun(_automationRun);           //выполнение POST
+            Assert.That(postAutomationRun, Is.EqualTo(HttpStatusCode.Created));
+            var totalCntAutomationRunsUpd = ProjectService!.GetAllAutomationRuns().Result.Total; //получение значения после выполнением POST 
+            Assert.That(totalCntAutomationRuns, Is.EqualTo(totalCntAutomationRunsUpd));        //сравнение значений до и после
         }
-
-        //    [Test]
-        //    [Order(2)]
-        //    public void GetProjects_test(AutomationRun automationRun)
-        //    {
-        //        var projects = ProjectService?.GetProjects().Result;
-
-        //        _logger.Info(projects.Total);
-        //        // foreach (var project in projects.)
-
-        //        Assert.That(projects.Page, Is.EqualTo(1));
-        //        Assert.That(projects.Total, Is.EqualTo(3));
-        //        //_logger.Info(projects);
-        //    }
-        //}
     }
 }

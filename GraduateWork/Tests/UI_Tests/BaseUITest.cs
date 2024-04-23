@@ -10,7 +10,7 @@ using NLog;
 
 namespace GraduateWork.Tests.UI_Tests;
 
-[Parallelizable(scope: ParallelScope.All)]
+[Parallelizable(scope: ParallelScope.Fixtures)]
 [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
 [AllureNUnit]
 public class BaseUITest

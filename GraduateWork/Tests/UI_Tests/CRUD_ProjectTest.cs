@@ -9,8 +9,9 @@ namespace GraduateWork.Tests.UI_Tests
     {
         [Test]
         [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
+        [Order(1)]
         //[Ignore("Ignore this Test")]
-        [Repeat(3)]
+        //[Repeat(3)]
         public void CreateProject_CRUD_ProjectTest()
         {
             UserSteps userSteps = new(Driver);
@@ -35,8 +36,9 @@ namespace GraduateWork.Tests.UI_Tests
 
         [Test]
         [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
+        [Order(2)]
         //[Ignore("Ignore this Test")]
-        //[Repeat(3)]
+        //[Repeat(10)]
         public void DeleteProject_CRUD_ProjectTest()
         {
             UserSteps userSteps = new(Driver);

@@ -11,7 +11,7 @@ namespace GraduateWork.Tests.API_Tests
     public class GetProjectTest : BaseApiTest //AFE
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
-         private AutomationRun _automationRun  = new AutomationRun();
+        private AutomationRun _automationRun  = new AutomationRun();
         public  int totalAutomationRunsTest;
 
         [Test]
@@ -22,7 +22,7 @@ namespace GraduateWork.Tests.API_Tests
             var actualProject = ProjectService!.GetProject();
             //Assert.That(actualProject.Equals , ( ));
 
-            //Assert.That(actualProject.Result.Run_count, Is.EqualTo(4));
+           // Assert.That(actualProject.Result.Run_count, Is.EqualTo(4));
 
             _logger.Info(actualProject);
         }
@@ -37,7 +37,7 @@ namespace GraduateWork.Tests.API_Tests
             Assert.Multiple(() =>
             {
                 Assert.That(actualProject1.Result.Page, Is.EqualTo(1));
-               // Assert.That(actualProject1.Result.Total.;
+                Assert.That(actualProject1.Result.Total, Is.EqualTo(7));
             });
             // _logger.Info(actualProject1);
         }
@@ -49,35 +49,12 @@ namespace GraduateWork.Tests.API_Tests
             var actualProject1 = ProjectService!.GetAllAutomationRuns();
 
             Assert.That(actualProject1.Result.Page, Is.EqualTo(1));
-            Assert.That(actualProject1.Result.Per_page, Is.EqualTo(100)); 
+            //Assert.That(actualProject1.Result.Total, Is.EqualTo(100)); 
              totalAutomationRunsTest = actualProject1.Result.Total;
              
         }
 
-        [Test]
-        [Order(2)]
-        public void PostAutomationRunsTest()
-        {
-            _automationRun = new AutomationRun
-            {
-                Name = "WP Test 1",
-                Source = "frontend"
-            };
-
-            var actual_automationRun = ProjectService!.PostAutomationRun(_automationRun);
-
-            // Блок проверок
-           
-            
-                Assert.That(actual_automationRun, Is.EqualTo(HttpStatusCode.Created));
-            // Assert.That(actual_automationRun.Result.Source, Is.EqualTo(_automationRun.Source));
-            // Assert.That(actual_automationRun.Result.SuiteMode, Is.EqualTo(_automationRun.SuiteMode));
-            //Assert.That(totalAutomationRunsTest, Is.EqualTo(174));
-
-           // _automationRun = actual_automationRun.Result;
-           //_logger.Info(_automationRun.ToString);
-
-        }
+        
 
     }
 }

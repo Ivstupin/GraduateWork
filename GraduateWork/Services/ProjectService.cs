@@ -11,7 +11,7 @@ namespace GraduateWork.Services;
 public class ProjectService : IProjectService, IDisposable
 {
     private readonly RestClientExtended _client;
-    private readonly string projectId = "189";
+    private readonly string projectId = "325";
 
     public ProjectService(RestClientExtended client)
     {
