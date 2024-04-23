@@ -8,7 +8,7 @@ trigger:
 
 continueOnError: true
 
-pool: Azure Pipelines
+pool: LocalPool
 #  vmImage: 'windows-latest'
 
 variables:
@@ -39,5 +39,5 @@ steps:
   condition: always()
   displayName: Publish Artifact
   inputs:
-    targetPath: 'GraduateWork\bin\Debug\net8.0\allure-report'
+    targetPath: '$(Pipeline.Workspace)'
     publishLocation: 'pipeline'
