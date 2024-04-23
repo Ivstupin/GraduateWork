@@ -7,7 +7,6 @@ namespace GraduateWork.Models;
 
 public record Project
 {
-    // [JsonPropertyName("result")] public List<Project> Result { get; set; } = new();
     [JsonPropertyName("id")] public int Id { get; set; }
     [JsonPropertyName("name")] public string? Name { get; set; }
     [JsonPropertyName("note")] public string? Note { get; set; }

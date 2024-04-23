@@ -38,7 +38,7 @@ public class BaseUITest
         Driver = new Browser().Driver;
         WaitsHelper = new WaitsHelper(Driver, TimeSpan.FromSeconds(Configurator.WaitsTimeout));
 
-        // NavigationsSteps = new NavigationsSteps(Driver);
+        
 
         Driver.Navigate().GoToUrl(Configurator.AppSettings.URL);
     }
@@ -53,7 +53,6 @@ public class BaseUITest
                 Screenshot screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
                 byte[] screenshotBytes = screenshot.AsByteArray;
                 AllureApi.AddAttachment("Screenshot", "image/png", screenshotBytes);
-                //AllureApi.AddAttachment("data.txt", "text/plain", Encoding.UTF8.GetBytes("Content"));
             }
         }
         catch (Exception) { throw; }
