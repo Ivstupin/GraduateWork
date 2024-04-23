@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using GraduateWork.Models;
 using Microsoft.Extensions.Configuration;
-
 using GraduateWork.Models.Enums;
 
 namespace GraduateWork.Helpers.Configuration

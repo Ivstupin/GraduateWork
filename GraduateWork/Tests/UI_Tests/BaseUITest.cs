@@ -2,10 +2,8 @@
 using GraduateWork.Helpers.Configuration;
 using GraduateWork.Helpers;
 using OpenQA.Selenium;
-using GraduateWork.Steps;
 using Allure.NUnit;
 using Allure.Net.Commons;
-using System.Text;
 using NLog;
 
 namespace GraduateWork.Tests.UI_Tests;
@@ -18,7 +16,6 @@ public class BaseUITest
     protected IWebDriver Driver { get; private set; }
     protected WaitsHelper WaitsHelper { get; private set; }
 
-    // protected NavigationsSteps navigationsSteps;
     protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     [OneTimeSetUp]
@@ -26,10 +23,10 @@ public class BaseUITest
     {
         //new NLogConfig().Config();
     }
-    public static void GlobalSetup()
-    {
-        AllureLifecycle.Instance.CleanupResultDirectory();
-    }
+    //public static void GlobalSetup()
+    //{
+    //    AllureLifecycle.Instance.CleanupResultDirectory();
+    //}
 
     [SetUp]
     public void FactoryDriverTest()

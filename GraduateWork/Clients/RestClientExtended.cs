@@ -2,12 +2,6 @@
 using GraduateWork.Helpers.Configuration;
 using NLog;
 using RestSharp;
-using RestSharp.Authenticators;
-using RestSharp.Authenticators.OAuth2;
-
-
-namespace GraduateWork.Clients;
-
 public sealed class RestClientExtended
 {
     private readonly RestClient _client;

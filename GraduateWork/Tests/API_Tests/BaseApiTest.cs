@@ -1,5 +1,4 @@
 ﻿using Allure.NUnit;
-using GraduateWork.Clients;
 using GraduateWork.Services;
 using NLog;
 

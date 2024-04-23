@@ -1,15 +1,16 @@
 ﻿using GraduateWork.Models;
+using RestSharp;
 using System.Net;
-//using TestRailComplexApi.Models;
 
 namespace GraduateWork.Services;
 
 public interface IProjectService
 {
-    HttpStatusCode GetProject(Project project);
+    
     Task<Projects> GetProjects();
-    HttpStatusCode GetInvalidUser();
+    Task<RestResponse> GetInvalidUser();
+    Task<RestResponse> GetInvalidProject();
     Task<Projects> GetAllAutomationRun();
-     HttpStatusCode PostAutomationRun(AutomationRun automationRun);
-    //HttpStatusCode GetProject(string projectId);
+    HttpStatusCode PostAutomationRun(AutomationRun automationRun);
+    HttpStatusCode GetProject(Project project);
 }

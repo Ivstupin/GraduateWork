@@ -1,9 +1,9 @@
 ﻿using System.Net;
-using GraduateWork.Clients;
+//using GraduateWork.Clients;
 using GraduateWork.Models;
 using GraduateWork.Services;
 using RestSharp;
-using GraduateWork.Clients;
+//using GraduateWork.Clients;
 using GraduateWork.Models;
 
 namespace GraduateWork.Services;
@@ -58,11 +58,21 @@ public class ProjectService : IProjectService, IDisposable
     /// <summary>
     /// запрос несуществующего пользователя
     /// </summary>
-    public HttpStatusCode GetInvalidUser()
+    public Task<RestResponse> GetInvalidUser( )
     {
         var request = new RestRequest("/api/v1/users/2");
-        return _client.ExecuteAsync(request).Result.StatusCode;
+        return _client.ExecuteAsync(request);
     }
+
+    /// <summary>
+    /// запрос несуществующего проекта
+    /// </summary>
+    public Task<RestResponse> GetInvalidProject()
+    {
+        var request = new RestRequest("/api/v1/projects/9000");
+        return _client.ExecuteAsync(request);
+    }
+
 
     public void Dispose()
     {

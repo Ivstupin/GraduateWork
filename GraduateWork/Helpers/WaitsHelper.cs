@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using GraduateWork.Elements;
 
 namespace GraduateWork.Helpers;
 
@@ -11,19 +12,17 @@ public class WaitsHelper(IWebDriver driver, TimeSpan timeout)
 
     public IWebElement WaitForVisibilityLocatedBy(By locator)
     {
-        try
-        {
-            return _wait.Until(ExpectedConditions.ElementIsVisible(locator));
-        }
-        catch (WebDriverTimeoutException)
-        {
-            throw;
-        }
+        return _wait.Until(ExpectedConditions.ElementIsVisible(locator));
     }
 
     public ReadOnlyCollection<IWebElement> WaitForAllVisibleElementsLocatedBy(By locator)
     {
         return _wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
+    }
+
+    public ReadOnlyCollection<IWebElement> WaitForPresenceOfAllElementsLocatedBy(By locator)
+    {
+        return _wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(locator));
     }
 
     public IWebElement WaitForExists(By locator)
@@ -64,6 +63,11 @@ public class WaitsHelper(IWebDriver driver, TimeSpan timeout)
         return _wait.Until(_ => element.Displayed);
     }
 
+    public UIElement WaitChildElement(IWebElement webElement, By by)
+    {
+        return new UIElement(driver, _wait.Until(_ => webElement.FindElement(by)));
+    }
+
     public IWebElement FluentWaitForElement(By locator)
     {
         // Инициализация и параметризация FluentWait
@@ -73,7 +77,7 @@ public class WaitsHelper(IWebDriver driver, TimeSpan timeout)
         };
 
         fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-        fluentWait.IgnoreExceptionTypes(typeof(ElementNotInteractableException));
+
         // Использование
         return fluentWait.Until(_ => driver.FindElement(locator));
     }

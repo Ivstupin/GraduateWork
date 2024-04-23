@@ -1,21 +1,17 @@
 ﻿using GraduateWork.Models;
-using GraduateWork.Services;
-using GraduateWork.Tests;
 using NLog;
-using GraduateWork.Models;
 using System.Net;
-using System.Net.Mail;
 using Newtonsoft.Json;
+using Allure.NUnit.Attributes;
+using Allure.Net.Commons;
 
 namespace GraduateWork.Tests.API_Tests
 {
+    [AllureSuite("API_Get_Tests")]
     public class GetTest : BaseApiTest 
     {
-       // var _project;
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
-       // private AutomationRun _automationRun  = new AutomationRun();
-        //public  int totalAutomationRunsTest;
-
+        
         [Test]
         [Category("NFE_GET")]
         public void GetProject_test()
@@ -55,22 +51,32 @@ namespace GraduateWork.Tests.API_Tests
         [Category("AFE_GET")]
         public void GetIncorrectUser()
         {
-            var IncorrectUser = ProjectService!.GetInvalidUser();
-            Assert.That(IncorrectUser, Is.EqualTo(HttpStatusCode.NotFound));
+            var incorrectUser = ProjectService!.GetInvalidUser();
+            Assert.That(incorrectUser.Result.StatusCode, Is.EqualTo(HttpStatusCode.NotFound));
+            ErrorResponse invalid = JsonConvert.DeserializeObject<ErrorResponse>(incorrectUser.Result.Content);
+            Assert.Multiple(() =>
+            {
+                Assert.That(invalid.Message, Is.EqualTo("The user does not exist or was disabled."));
+                Assert.That(invalid.Сode, Is.EqualTo(0));
+            });
 
+            AllureApi.Step("Получена ожидаемая ошибка");
         }
 
         [Test]
         [Category("AFE_GET")]
-        public void GetAllAutomationRunsTest5()
+        public void GetIncorrectProject()
         {
-            var autoRun_project = ProjectService!.GetAllAutomationRun().Result;
-
+            var incorrectProject = ProjectService!.GetInvalidProject();
+            Assert.That(incorrectProject.Result.StatusCode, Is.EqualTo(HttpStatusCode.NotFound));
+            ErrorResponse invalid = JsonConvert.DeserializeObject<ErrorResponse>(incorrectProject.Result.Content);
             Assert.Multiple(() =>
             {
-                Assert.That(autoRun_project.Page, Is.EqualTo(1));
-                Assert.That(autoRun_project.Last_page, Is.EqualTo(1));
+                Assert.That(invalid.Message, Is.EqualTo("The project does not exist or you do not have the permissions to access it."));
+                Assert.That(invalid.Сode, Is.EqualTo(0));
             });
+
+            AllureApi.Step("Получена ожидаемая ошибка");
         }
     }
 }
