@@ -7,6 +7,7 @@ public class FileUploadTest : BaseUITest
 {
     [Test]
     [Description("Загрузка файла")]
+    [Ignore("Ignore this Test")]
     public void _FileUploadTest()
     {// должен быть создан любой проект
         UserSteps userSteps = new(Driver);

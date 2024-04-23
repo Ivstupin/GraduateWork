@@ -57,6 +57,7 @@ namespace GraduateWork.Tests.API_Tests
         {
             var IncorrectUser = ProjectService!.GetInvalidUser();
             Assert.That(IncorrectUser, Is.EqualTo(HttpStatusCode.NotFound));
+
         }
 
         [Test]

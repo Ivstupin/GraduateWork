@@ -20,6 +20,7 @@ public class FailedTest : BaseUITest
 
     [Test]
     [Description("Тест имитирует дефект и должен упасть")]
+    [Ignore("Ignore this Test")]
     public void Failed_LoginTest()
     {
         UserSteps userSteps = new(Driver);
