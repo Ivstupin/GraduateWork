@@ -36,8 +36,8 @@ steps:
     testResultsDir: GraduateWork\bin\Debug\net8.0\allure-results
 
 - task: PublishPipelineArtifact@1
-   condition: always()
-   displayName: Publish Artifact
-   inputs:
+  condition: always()
+  displayName: Publish Artifact
+  inputs:
     targetPath: 'GraduateWork\bin\Debug\net8.0\allure-report'
     publishLocation: 'pipeline'
