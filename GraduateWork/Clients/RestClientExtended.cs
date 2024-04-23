@@ -10,21 +10,14 @@ namespace GraduateWork.Clients;
 
 public sealed class RestClientExtended
 {
-    //private string Token = "testmo_api_eyJpdiI6ImxCQWNsUFlYbXo4bHRwdUhDUENsbHc9PSIsInZhbHVlIjoidlFJMkFCa3BHRzZlazVBaEYzZUh6OUI3aGR4M2Yya1ZJeG8vclR0eDJjND0iLCJtYWMiOiJhNjg3ZTJiNGRmNzllNmUyODcyMTgyZGVjN2QxZmJmZjg2NDhlYzAxNjY1NzZkOTM5ZTEwZjUzNTFkMDEyMmQzIiwidGFnIjoiIn0=";
     private readonly RestClient _client;
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     public RestClientExtended()
     {
-        var options = new RestClientOptions(Configurator.AppSettings.URI ?? throw new InvalidOperationException())
-        {
-           // Authenticator =
-                //new OAuth2AuthorizationRequestHeaderAuthenticator("Authorization", $"Bearer {Token}")
-        };
-
-        _client = new RestClient(options);
-       // request.AddHeader("Authorization", $"Bearer {tok}");
-        _client.AddDefaultHeaders(new Dictionary<string, string> {{ "Authorization", $"Bearer { Configurator.AppSettings.Token}" }});
+        var options = new RestClientOptions(Configurator.AppSettings.URI ?? throw new InvalidOperationException());
+       _client = new RestClient(options);
+       _client.AddDefaultHeaders(new Dictionary<string, string> {{ "Authorization", $"Bearer { Configurator.AppSettings.Token}" }});
 
         Debug.Assert(Configurator.Admin != null, "Configurator.Admin != null");
     }

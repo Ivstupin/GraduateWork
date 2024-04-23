@@ -1,3 +1,4 @@
+
 # ASP.NET Core (.NET Framework)
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
@@ -5,6 +6,8 @@
 
 trigger:
 - master
+
+continueOnError: true
 
 pool: LocalPool
 #  vmImage: 'windows-latest'
@@ -20,7 +23,22 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+    
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'GraduateWork/GraduateWork.csproj'
+    projects: 'GraduateWork\GraduateWork.csproj'
+
+- task: PublishAllureReport@1
+  condition: always()
+  displayName: Publish Report
+  inputs:
+    allureVersion: 2.27.0
+    testResultsDir: GraduateWork\bin\Debug\net8.0\allure-results
+
+- task: PublishPipelineArtifact@1
+  condition: always()
+  displayName: Publish Artifact
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
