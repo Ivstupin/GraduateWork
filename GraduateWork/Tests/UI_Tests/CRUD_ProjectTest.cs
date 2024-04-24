@@ -1,4 +1,6 @@
 ﻿using Allure.NUnit.Attributes;
+using Bogus.DataSets;
+using GraduateWork.Models;
 using GraduateWork.Pages;
 using GraduateWork.Steps;
 
@@ -8,50 +10,64 @@ namespace GraduateWork.Tests.UI_Tests
     {
         [Test]
         [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
-        [Order(1)]
+        [Order(2)]
         //[Ignore("Ignore this Test")]
-        //[Repeat(3)]
+        //[Repeat(4)]
         public void CreateProject_CRUD_ProjectTest()
         {
-            UserSteps userSteps = new(Driver);
-            ProjectsPage projectsPage = userSteps.LoginByCorrect_User(); //логин
-            Assert.That(projectsPage.IsPageOpened); //страница projectsPage открыта
-
-            ActionsSteps actionsSteps = new(Driver);
-            AddProjectPage addProjectPage = actionsSteps.PlusProjectButtonClick(); //клик по кнопке Project
-            Assert.That(addProjectPage.IsPageOpened); //страница addProjectPage открыта
-
-            actionsSteps.InputValuesInNameInputField("Тестовый проект");
-            actionsSteps.InputValuesInSummaryInputField("Тестовое описание");
-
-            ProjectsOverviewPage projectsOverviewPage = actionsSteps.AddProjectButtonClick();
-            Assert.That(projectsOverviewPage.IsPageOpened); //страница addProjectPage открыта
-
-            ProjectsAdminPage projectsAdminPage = actionsSteps.ManageProjectsButtonClick();
-
-            Assert.That(projectsAdminPage.IsPageOpened);
-
-        }
+            _navigationSteps.SuccessfulLogin(Admin);
+            _navigationSteps.NavigateToProjectsPage()._PlusProjectButton.Click();
+            _navigationSteps.NavigateAddProjectPage().NameInputField.SendKeys("Автопродажа");
+            _navigationSteps.NavigateAddProjectPage().SummaryInputField.SendKeys("Автопродажа");
+            _navigationSteps.NavigateAddProjectPage()._AddProjectButton.Click();
+            _navigationSteps.NavigateProjectsOverviewPage().ManageProjectsButtonLink.Click();
+            //Assert.That(_navigationSteps.NavigateProjectsAdminPage().RemovableProjectButton90.Text.Trim, Is.EqualTo("5"));
+            }
 
         [Test]
         [AllureSeverity(Allure.Net.Commons.SeverityLevel.critical)]
-        [Order(2)]
+        [Order(1)]
         //[Ignore("Ignore this Test")]
-        //[Repeat(10)]
+        //[Repeat(7)]
         public void DeleteProject_CRUD_ProjectTest()
         {
-            UserSteps userSteps = new(Driver);
-            ProjectsPage projectsPage = userSteps.LoginByCorrect_User(); //логин
-            Assert.That(projectsPage.IsPageOpened); //страница projectsPage открыта
-            ActionsSteps actionsSteps = new(Driver);
-            ProjectsOverviewPage projectsOverviewPage = actionsSteps.ProjectLinkClick();
-            ProjectsAdminPage projectsAdminPage = actionsSteps.ManageProjectsButtonClick();
-            actionsSteps.DeleteProject();
+            _navigationSteps.SuccessfulLogin(Admin);
+            _navigationSteps.NavigateToProjectsPage().Project.Click();
+            _navigationSteps.NavigateProjectsOverviewPage().ManageProjectsButtonLink.Click();
+            _navigationSteps.NavigateProjectsAdminPage().DeleteButton.Click();
+            _navigationSteps.NavigateProjectsAdminPage().CheckboxDelete.Click();
+            _navigationSteps.NavigateProjectsAdminPage().DeleteProjectButton.Click();
             Assert.Multiple(() =>
             {
-                Assert.That(projectsAdminPage.RemovableProjectButton.Displayed);
-                Assert.That(projectsAdminPage.IsProjectWasDelete());
+                Assert.That(_navigationSteps.NavigateProjectsAdminPage().RemovableProjectButton.Displayed);
+                Assert.That(_navigationSteps.NavigateProjectsAdminPage().IsProjectWasDelete());
             });
+        }
+
+        [Test]
+        [Category("Regression")]
+        [Description("Загрузка файла")]
+        [Order(3)]
+        ////[Ignore("Ignore this Test")]
+        public void _FileUploadTest()
+        {
+            _navigationSteps.SuccessfulLogin(Admin);
+            _navigationSteps.NavigateToProjectsPage()._PlusProjectButton.Click();
+            _navigationSteps.NavigateAddProjectPage().NameInputField.SendKeys("UploadFile");
+            _navigationSteps.NavigateAddProjectPage().SummaryInputField.SendKeys("UploadFile");
+            _navigationSteps.NavigateAddProjectPage()._AddProjectButton.Click();
+            _navigationSteps.NavigateProjectsOverviewPage().RepositoryButton.Click();
+            _navigationSteps.NavigateRepositoryPage().AddTestCaseButton.Click();
+            _navigationSteps.NameInputFieldAddTestCase("tost");
+            _navigationSteps.NavigateRepositoryPage().UploadFile();
+            _navigationSteps.NavigateRepositoryPage().TestCaseLink.Click();
+            Assert.That(_navigationSteps.NavigateRepositoryPage().ImageUploaded.Displayed);
+            _navigationSteps.NavigateToProjectsPage().Project.Click();
+            _navigationSteps.NavigateProjectsOverviewPage().ManageProjectsButtonLink.Click();
+            _navigationSteps.NavigateProjectsAdminPage().DeleteButton.Click();
+            _navigationSteps.NavigateProjectsAdminPage().CheckboxDelete.Click();
+            _navigationSteps.NavigateProjectsAdminPage().DeleteProjectButton.Click();
+            Assert.That(_navigationSteps.NavigateProjectsAdminPage().IsProjectWasDelete());
         }
     }
 }

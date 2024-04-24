@@ -1,25 +1,31 @@
-﻿using GraduateWork.Pages;
-using GraduateWork.Steps;
+﻿using GraduateWork.Models;
 
 namespace GraduateWork.Tests.UI_Tests;
 
 public class LoginTest : BaseUITest
 {
     [Test]
+    [Category("Smoke")]
+    [Category("Regression")]
     public void Successfull_LoginTest()
     {
-        UserSteps userSteps = new(Driver);
-        ProjectsPage projectsPage = userSteps.LoginByCorrect_User();
-        Assert.That(projectsPage.IsPageOpened);
+        Assert.That(
+            _navigationSteps
+                .SuccessfulLogin(Admin)
+                .IsPopupVisible);
     }
 
     [Test]
+    [Category("Regression")]
     public void WrongPassword_LoginTest()
     {
-        UserSteps userSteps = new(Driver);
-        LoginPage loginPage = userSteps.LoginByWrong_PSW();
-        Thread.Sleep(5000);
-        Assert.That(loginPage.IsPageOpened);
-        Assert.That(loginPage.ErrorTextIsVisible);
+        Assert.That(
+            _navigationSteps
+                .IncorrectLogin(new User
+                {
+                    Email = Admin.Email,
+                    Password = Admin.Password + "wrong_psw"
+                })
+                .ErrorTextIsVisible());
     }
 }

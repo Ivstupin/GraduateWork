@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace GraduateWork.Pages
 {
-    public class LoginPage : BasePage
+    public class LoginPage(IWebDriver? driver, bool openByURL = false) : BasePage(driver, openByURL)
     {
         private static string END_POINT = "";
 
@@ -14,16 +14,14 @@ namespace GraduateWork.Pages
         private static readonly By ErrorBy = By.XPath("//div[contains(text(),'These')]");// поле для вывода ошибки 'These credentials do not match our records or the user account is not allowed to log in.'
 
         // Инициализация класса
-        public LoginPage(IWebDriver driver) : base(driver)
-        {
-        }
+       
 
         protected override string GetEndpoint()
         {
             return END_POINT;
         }
 
-        public override bool IsPageOpened()
+        protected override bool EvaluateLoadedStatus()
         {
             return LoginInButton.Displayed && UserEmailInput.Displayed;
         }

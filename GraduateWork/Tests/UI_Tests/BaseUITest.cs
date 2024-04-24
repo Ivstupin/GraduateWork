@@ -6,6 +6,8 @@ using Allure.NUnit;
 using Allure.Net.Commons;
 using NLog;
 using Allure.NUnit.Attributes;
+using GraduateWork.Steps;
+using GraduateWork.Models;
 
 namespace GraduateWork.Tests.UI_Tests;
 
@@ -17,15 +19,18 @@ namespace GraduateWork.Tests.UI_Tests;
 public class BaseUITest
 {
     protected IWebDriver Driver { get; private set; }
-    protected WaitsHelper WaitsHelper { get; private set; }
-
+    //protected WaitsHelper WaitsHelper { get; private set; }
+    protected NavigationSteps _navigationSteps;
+    protected ActionsSteps _actionsSteps;
     protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
+    protected User? Admin { get; private set; }
+
     [OneTimeSetUp]
-    public static void SuiteSetup()
-    {
-        //new NLogConfig().Config();
-    }
+    //public static void SuiteSetup()
+    //{
+    //    //new NLogConfig().Config();
+    //}
     public static void GlobalSetup()
     {
         AllureLifecycle.Instance.CleanupResultDirectory();
@@ -36,7 +41,11 @@ public class BaseUITest
     {
         //Logger.Error("Error level...");
         Driver = new Browser().Driver;
-        WaitsHelper = new WaitsHelper(Driver, TimeSpan.FromSeconds(Configurator.WaitsTimeout));
+
+        _navigationSteps = new NavigationSteps(Driver);
+        //WaitsHelper = new WaitsHelper(Driver, TimeSpan.FromSeconds(Configurator.WaitsTimeout));
+        Admin = Configurator.Admin;
+
         Driver.Navigate().GoToUrl(Configurator.AppSettings.URL);
     }
 

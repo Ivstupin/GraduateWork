@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace GraduateWork.Pages
 {
-    public class ProjectsOverviewPage : BasePage
+    public class ProjectsOverviewPage(IWebDriver? driver, bool openByURL = false) : BasePage(driver, openByURL)
     {
         private static string END_POINT = "";
 
@@ -12,17 +12,12 @@ namespace GraduateWork.Pages
        private static readonly By ManageProjectsButtonLinkBy = By.CssSelector("[href='https://ivst.testmo.net/admin/projects']"); //поле ввода Summary
        private static readonly By RepositoryButtonBy = By.CssSelector("[href*='https://ivst.testmo.net/repositories/']"); //счётчик введённых символов в поле Summary
                                                                                                                          
-        public ProjectsOverviewPage(IWebDriver driver, bool openPageByUrl = false) : base(driver, openPageByUrl)
-        {
-            
-        }
-
         protected override string GetEndpoint()
         {
             return END_POINT;
         }
 
-        public override bool IsPageOpened()
+        protected override bool EvaluateLoadedStatus()
         {
             Console.WriteLine(ManageProjectsButtonLink.Text.Trim());
             return ManageProjectsButtonLink.Text.Trim().Equals("Manage projects");

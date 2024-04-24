@@ -6,7 +6,7 @@ using OpenQA.Selenium.Interactions;
 
 namespace GraduateWork.Pages
 {
-    public class ProjectsPage : BasePage
+    public class ProjectsPage(IWebDriver? driver, bool openByURL = false) : BasePage(driver, openByURL)
     {
         private static string END_POINT = "";
 
@@ -18,17 +18,14 @@ namespace GraduateWork.Pages
         private static readonly By PlusProjectButtonBy = By.XPath("//button[contains(text(),'Project')]"); //селектор кнопки добавить проект
         private static readonly By ProjectBy = By.CssSelector("[href*='https://ivst.testmo.net/projects/view']"); //селектор существующего проекта
         
-        public ProjectsPage(IWebDriver driver, bool openPageByUrl = false) : base(driver, openPageByUrl)
-        {
-            
-        }
+        
 
         protected override string GetEndpoint()
         {
             return END_POINT;
         }
 
-        public override bool IsPageOpened()
+        protected override bool EvaluateLoadedStatus()
         {
             return TitleLabel.Text.Trim().Equals("Projects");
         }
@@ -47,7 +44,7 @@ namespace GraduateWork.Pages
                                                                                               
 
         /// <summary>
-        /// найдёт все всплывающие сообщения на странице и покажет их
+        ///всплывающее сообщения на странице
         /// </summary>
         public void MoveToPopupMessage() 
         {
