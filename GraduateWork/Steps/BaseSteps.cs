@@ -1,8 +1,6 @@
 ﻿using GraduateWork.Pages;
 using OpenQA.Selenium;
 
-//using GraduateWork.Pages.ProjectPages;
-
 namespace GraduateWork.Steps;
 
 public class BaseSteps(IWebDriver driver)

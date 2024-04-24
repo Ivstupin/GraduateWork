@@ -21,7 +21,7 @@ namespace GraduateWork.Tests.UI_Tests
             _navigationSteps.NavigateAddProjectPage().SummaryInputField.SendKeys("Автопродажа");
             _navigationSteps.NavigateAddProjectPage()._AddProjectButton.Click();
             _navigationSteps.NavigateProjectsOverviewPage().ManageProjectsButtonLink.Click();
-            //Assert.That(_navigationSteps.NavigateProjectsAdminPage().RemovableProjectButton90.Text.Trim, Is.EqualTo("5"));
+            Assert.That(_navigationSteps.NavigateProjectsAdminPage()._PlusProjectButton.Displayed);
             }
 
         [Test]

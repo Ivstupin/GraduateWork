@@ -5,7 +5,7 @@ using System.Net;
 
 namespace GraduateWork.Tests.API_Tests
 {
-    [AllureSuite("API_Post_Tests")]
+    //[AllureSuite("API_Tests")]
     public class PostTest : BaseApiTest 
     {
         private AutomationRun _automationRun = new();

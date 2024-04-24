@@ -14,10 +14,8 @@ namespace GraduateWork.Pages
         private static readonly By CounterBy = By.ClassName("maxlength-counter__counter"); //счётчик введённых символов в поле Summary
         private static readonly By NameInputFieldBy = By.CssSelector("[placeholder='Project name']");
         private static readonly By NameLabelBy = By.XPath("//*[contains(text(),'Name')]");
-        private static readonly By AddProjectButtonBy = By.CssSelector("[data-target='submitButton']"); //
-
-        
-
+        private static readonly By AddProjectButtonBy = By.CssSelector("[data-target='submitButton']"); 
+                                                                                                        
         protected override string GetEndpoint()
         {
             return END_POINT;

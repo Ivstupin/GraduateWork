@@ -6,7 +6,6 @@ public class LoginTest : BaseUITest
 {
     [Test]
     [Category("Smoke")]
-    [Category("Regression")]
     public void Successfull_LoginTest()
     {
         Assert.That(
@@ -16,7 +15,7 @@ public class LoginTest : BaseUITest
     }
 
     [Test]
-    [Category("Regression")]
+    [Category("Smoke")]
     public void WrongPassword_LoginTest()
     {
         Assert.That(

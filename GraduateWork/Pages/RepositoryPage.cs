@@ -84,21 +84,6 @@ namespace GraduateWork.Pages
                 repositoryPage.AddCaseButton.Click();
             }
             else throw new Exception("Файл не загружен");
-
-            //return repositoryPage;
-
-
         }
-        public RepositoryPage NameInputFieldAddTestCase(string values)
-        {
-            RepositoryPage repositoryPage = new RepositoryPage(Driver);
-            repositoryPage.NameInputField.Click();
-            repositoryPage.NameInputField.Clear();
-            repositoryPage.NameInputField.SendKeys(values);
-            return repositoryPage;
-        }
-
     }
-
-    
 }

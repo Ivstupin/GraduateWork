@@ -50,20 +50,25 @@ public class NavigationSteps : BaseSteps
     /// <summary>
     /// со страницы ProjectsPage вызываем страницу AddProjectPage кликом по кнопке Project
     /// </summary>
+    [AllureStep]
     public AddProjectPage NavigateAddProjectPage()
     {
         return new AddProjectPage(Driver);
     }
+
+    [AllureStep]
     public ProjectsOverviewPage NavigateProjectsOverviewPage()
     {
         return new ProjectsOverviewPage(Driver);
     }
 
+    [AllureStep]
     public ProjectsAdminPage NavigateProjectsAdminPage()
     {
         return new ProjectsAdminPage(Driver);
     }
 
+    [AllureStep]
     public AddProjectPage InputValuesInSummaryInputField(string values)
     {
         AddProjectPage = new AddProjectPage(Driver);
@@ -73,41 +78,19 @@ public class NavigationSteps : BaseSteps
         return AddProjectPage;
     }
 
+    [AllureStep]
     public RepositoryPage NavigateRepositoryPage()
     {
         return new RepositoryPage(Driver);
     }
 
     /// <summary>
-    /// при создании тест-кейса загружаем картинку с котом во вложения
-    /// </summary>
-    //public RepositoryPage UploadFile()
-    //{
-    //    RepositoryPage repositoryPage = new RepositoryPage(Driver);
-
-    //    string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-    //    string filePath = Path.Combine(assemblyPath, "Resources", "cat_time.jpg");
-
-    //    repositoryPage.ChooseFilesFileUpload.SendKeys(filePath);
-
-    //    if (repositoryPage.ImageUploaded.Displayed)
-    //    {
-    //        repositoryPage.AddCaseButton.Click();
-    //    }
-    //    else throw new Exception("Файл не загружен");
-
-    //    return repositoryPage;
-    //}
-
-    /// <summary>
     /// на странице RepositoryPage заполняем поле ввода Name при создании тест-кейса
     /// </summary>
+    [AllureStep]
     public RepositoryPage NameInputFieldAddTestCase(string values)
     {
         RepositoryPage  = new RepositoryPage(Driver);
-       // RepositoryPage.NameInputField.Click();
-       //RepositoryPage.NameInputField.Clear();
         RepositoryPage.NameInputField.SendKeys(values);
         return RepositoryPage;
     }
