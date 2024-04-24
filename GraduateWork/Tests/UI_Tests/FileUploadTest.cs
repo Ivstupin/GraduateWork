@@ -24,7 +24,7 @@ public class FileUploadTest : BaseUITest
         RepositoryPage repositoryPage = actionsSteps.ToRepositoryPage();
         //Assert.That(repositoryPage.IsPageOpened);
 
-        UIElement _UIElement = new(repositoryPage.AddTestCaseButton, by:);
+        //UIElement _UIElement = new(repositoryPage.AddTestCaseButton, by:);
         // repositoryPage.IsProjectWasDelete(        //Assert.That(repositoryPage.IsPageOpened);
         //repositoryPage.GetWaitsInvisibleRemovableProjectButton());
         actionsSteps.AddTestCaseButtonClick();

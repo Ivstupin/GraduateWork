@@ -3,7 +3,7 @@ using GraduateWork.Helpers.Configuration;
 using GraduateWork.Helpers;
 using OpenQA.Selenium;
 using Allure.NUnit;
-//using Allure.Net.Commons;
+using Allure.Net.Commons;
 using NLog;
 using Allure.NUnit.Attributes;
 
@@ -26,10 +26,10 @@ public class BaseUITest
     {
         //new NLogConfig().Config();
     }
-    //public static void GlobalSetup()
-    //{
-    //    AllureLifecycle.Instance.CleanupResultDirectory();
-    //}
+    public static void GlobalSetup()
+    {
+        AllureLifecycle.Instance.CleanupResultDirectory();
+    }
 
     [SetUp]
     public void FactoryDriverTest()
