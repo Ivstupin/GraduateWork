@@ -9,8 +9,9 @@ trigger:
 
 continueOnError: true
 
-pool: LocalPool
-#  vmImage: 'windows-latest'
+# pool: LocalPool
+pool: Azure Pipelines
+  vmImage: 'windows-latest'
 
 variables:
   solution: '**/*.sln'

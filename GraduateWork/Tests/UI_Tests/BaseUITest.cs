@@ -3,14 +3,17 @@ using GraduateWork.Helpers.Configuration;
 using GraduateWork.Helpers;
 using OpenQA.Selenium;
 using Allure.NUnit;
-using Allure.Net.Commons;
+//using Allure.Net.Commons;
 using NLog;
+using Allure.NUnit.Attributes;
 
 namespace GraduateWork.Tests.UI_Tests;
 
 [Parallelizable(scope: ParallelScope.Fixtures)]
 [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
 [AllureNUnit]
+
+[AllureSuite("UI_Tests")]
 public class BaseUITest
 {
     protected IWebDriver Driver { get; private set; }
@@ -34,9 +37,6 @@ public class BaseUITest
         //Logger.Error("Error level...");
         Driver = new Browser().Driver;
         WaitsHelper = new WaitsHelper(Driver, TimeSpan.FromSeconds(Configurator.WaitsTimeout));
-
-        
-
         Driver.Navigate().GoToUrl(Configurator.AppSettings.URL);
     }
 

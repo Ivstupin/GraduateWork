@@ -1,7 +1,6 @@
 ﻿using Allure.NUnit.Attributes;
 using GraduateWork.Pages;
 using GraduateWork.Steps;
-using OpenQA.Selenium;
 
 namespace GraduateWork.Tests.UI_Tests
 {

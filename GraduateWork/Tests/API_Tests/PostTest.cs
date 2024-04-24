@@ -1,9 +1,11 @@
-﻿using GraduateWork.Models;
+﻿using Allure.NUnit.Attributes;
+using GraduateWork.Models;
 using NLog;
 using System.Net;
 
 namespace GraduateWork.Tests.API_Tests
 {
+    [AllureSuite("API_Post_Tests")]
     public class PostTest : BaseApiTest 
     {
         private AutomationRun _automationRun = new();

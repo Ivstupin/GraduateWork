@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using GraduateWork.Helpers.Configuration;
 
+
 namespace GraduateWork.Steps;
 
 public class UserSteps : BaseSteps
@@ -11,7 +12,7 @@ public class UserSteps : BaseSteps
 
     public UserSteps(IWebDriver driver) : base(driver)
     {
-        loginPage = new LoginPage(Driver);
+        loginPage = new LoginPage(driver);
         projectsPage = new ProjectsPage(Driver);
     }
     public ProjectsPage LoginByCorrect_User()

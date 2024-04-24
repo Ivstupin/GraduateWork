@@ -12,6 +12,7 @@ public class ActionsSteps : BaseSteps
     public ProjectsOverviewPage projectsOverviewPage;
     public ProjectsAdminPage projectsAdminPage;
     public RepositoryPage repositoryPage;
+
     public ActionsSteps(IWebDriver driver) : base(driver)
     {
         addProjectPage = new AddProjectPage(Driver);
@@ -97,7 +98,7 @@ public class ActionsSteps : BaseSteps
         return new RepositoryPage(Driver);
     }
 
-    // <summary>
+    /// <summary>
     /// на странице RepositoryPage добавиить тест-кейс
     /// </summary>
     public RepositoryPage AddTestCaseButtonClick()
