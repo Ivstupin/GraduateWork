@@ -10,7 +10,7 @@ trigger:
 continueOnError: true
 
 # pool: LocalPool
-#pool: Azure Pipelines
+pool:
   vmImage: 'windows-latest'
 
 variables:
