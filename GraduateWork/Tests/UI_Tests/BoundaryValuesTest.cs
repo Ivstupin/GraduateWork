@@ -1,10 +1,14 @@
-﻿using GraduateWork.Pages;
+﻿using GraduateWork.Models;
+using GraduateWork.Pages;
 using GraduateWork.Steps;
 
 namespace GraduateWork.Tests.UI_Tests
 {
+    
     public class BoundaryValuesTest : BaseUITest
     {
+        readonly BoundaryValues boundaryValues = new BoundaryValues();
+
         [Test]
         [Category("Regression")]
         public void PositiveBoundaryValuesTest()
@@ -12,7 +16,7 @@ namespace GraduateWork.Tests.UI_Tests
             _navigationSteps.SuccessfulLogin(Admin);
             _navigationSteps.NavigateToProjectsPage()._PlusProjectButton.Click();
 
-            _navigationSteps.InputValuesInSummaryInputField("dfhfdgdh6re5rujfthfjftghdb56u56....сорок");
+            _navigationSteps.InputValuesInSummaryInputField(boundaryValues.Bvalues40);
             Assert.That(_navigationSteps.NavigateAddProjectPage().CounterValue("40/80"));
 
             _navigationSteps.InputValuesInSummaryInputField(""); //0
@@ -21,10 +25,10 @@ namespace GraduateWork.Tests.UI_Tests
             _navigationSteps.InputValuesInSummaryInputField("1"); //1
             Assert.That(_navigationSteps.NavigateAddProjectPage().CounterValue("1/80"));
 
-            _navigationSteps.InputValuesInSummaryInputField("asfgdfh6u5yyfhgjg6gkj7gj5i67u75uu67uj666666666jtgygygjc63...........восемь_десят"); //80
+            _navigationSteps.InputValuesInSummaryInputField(boundaryValues.Bvalues80); //80
             Assert.That(_navigationSteps.NavigateAddProjectPage().CounterValue("80/80"));
 
-            _navigationSteps.InputValuesInSummaryInputField("asfgdfh6u5yyfhgjg6gkj7gj5i67u75uu67uj666666666jtgygygjc63......семьдесят_девять"); //79
+            _navigationSteps.InputValuesInSummaryInputField(boundaryValues.Bvalues79); //79
             Assert.That(_navigationSteps.NavigateAddProjectPage().CounterValue("79/80"));
         }
 
@@ -35,15 +39,13 @@ namespace GraduateWork.Tests.UI_Tests
             _navigationSteps.SuccessfulLogin(Admin);
             _navigationSteps.NavigateToProjectsPage()._PlusProjectButton.Click();
 
-            _navigationSteps.InputValuesInSummaryInputField("asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_оди11"); //81
+            _navigationSteps.InputValuesInSummaryInputField(boundaryValues.Bvalues81); //81
             Assert.That(_navigationSteps.NavigateAddProjectPage().CounterValue("80/80"));
 
-            _navigationSteps.InputValuesInSummaryInputField("asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_оди31asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_один2"); //162
+            _navigationSteps.InputValuesInSummaryInputField(boundaryValues.Bvalues162); //162
             Assert.That(_navigationSteps.NavigateAddProjectPage().CounterValue("80/80"));
 
-            _navigationSteps.InputValuesInSummaryInputField("asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_оди31asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj..........." +
-                "восемь_десят_один2asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_оди31asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_один2" +
-                "asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_оди31asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_один2"); //много
+            _navigationSteps.InputValuesInSummaryInputField(boundaryValues.BvaluesBig); //много
             Assert.That(_navigationSteps.NavigateAddProjectPage().CounterValue("80/80"));
         }
     }

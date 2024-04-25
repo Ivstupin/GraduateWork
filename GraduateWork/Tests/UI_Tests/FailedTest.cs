@@ -30,11 +30,11 @@ public class FailedTest : BaseUITest
     {
         Assert.That(
             _navigationSteps
-                .IncorrectLogin(new User
+                .SuccessfulLogin(new User
                 {
                     Email = Admin.Email,
-                    Password = Admin.Password
+                    Password = Admin.Password + "wrng_psw"
                 })
-                .ErrorTextIsVisible());
+                .PopupMessage.Displayed);
     }
 }

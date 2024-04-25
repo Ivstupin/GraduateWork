@@ -11,12 +11,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Fakers\**" />
-	  <EmbeddedResource Remove="Fakers\**" />
-	  <None Remove="Fakers\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="allureConfig.json" />
 	  <None Remove="appsettings.json" />
 	  <None Remove="NLog.config" />

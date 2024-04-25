@@ -19,9 +19,8 @@ namespace GraduateWork.Tests.UI_Tests;
 public class BaseUITest
 {
     protected IWebDriver Driver { get; private set; }
-    //protected WaitsHelper WaitsHelper { get; private set; }
     protected NavigationSteps _navigationSteps;
-    protected ActionsSteps _actionsSteps;
+    //protected ActionsSteps _actionsSteps;
     protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     protected User? Admin { get; private set; }
