@@ -13,5 +13,4 @@ public class BoundaryValues
     public string? BvaluesBig { get; set; } = "asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_оди31asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj..........." +
                 "восемь_десят_один2asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_оди31asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_один2" +
                 "asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_оди31asfgdfh6u5yyfhgjg6gkj73457u75uu67uj666666666jtgygygj...........восемь_десят_один2";
-
 }

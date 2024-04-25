@@ -16,7 +16,6 @@ namespace GraduateWork.Pages
         private static readonly By DeleteProjectButtonBy = By.CssSelector("[data-target='deleteButton']"); 
         private static readonly By RemovableProjectButtonBy = By.CssSelector("[class='deleted-entity']"); //селектор удаляемой сущности проекта (после удаления проекта)
         private static readonly By RemovableProjectButtonBy90 = By.XPath("//*[contains(text(),'5')]");
-        //private static readonly By RemovableProjectButtonBy91 = By.Val("//*[contains(text(),'5')]");
 
         protected override string GetEndpoint()
         {
@@ -59,7 +58,5 @@ namespace GraduateWork.Pages
                 return true;
             }
         }
-
-       
     }
 }

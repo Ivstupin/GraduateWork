@@ -6,7 +6,6 @@ namespace GraduateWork.Services;
 
 public interface IProjectService
 {
-    
     Task<Projects> GetProjects();
     Task<RestResponse> GetInvalidUser();
     Task<RestResponse> GetInvalidProject();

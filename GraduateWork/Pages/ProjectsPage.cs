@@ -3,7 +3,6 @@ using GraduateWork.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
-
 namespace GraduateWork.Pages
 {
     public class ProjectsPage(IWebDriver? driver, bool openByURL = false) : BasePage(driver, openByURL)
@@ -18,8 +17,6 @@ namespace GraduateWork.Pages
         private static readonly By PlusProjectButtonBy = By.XPath("//button[contains(text(),'Project')]"); //селектор кнопки добавить проект
         private static readonly By ProjectBy = By.CssSelector("[href*='https://ivst.testmo.net/projects/view']"); //селектор существующего проекта
         
-        
-
         protected override string GetEndpoint()
         {
             return END_POINT;

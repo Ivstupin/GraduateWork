@@ -1,7 +1,6 @@
 ﻿using GraduateWork.Models.Enums;
 
 namespace GraduateWork.Models;
-
 public record User
 {
     public UserType UserType { get; set; }

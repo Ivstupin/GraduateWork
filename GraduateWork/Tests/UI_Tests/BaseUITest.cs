@@ -20,16 +20,11 @@ public class BaseUITest
 {
     protected IWebDriver Driver { get; private set; }
     protected NavigationSteps _navigationSteps;
-    //protected ActionsSteps _actionsSteps;
     protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     protected User? Admin { get; private set; }
 
     [OneTimeSetUp]
-    //public static void SuiteSetup()
-    //{
-    //    //new NLogConfig().Config();
-    //}
     public static void GlobalSetup()
     {
         AllureLifecycle.Instance.CleanupResultDirectory();
@@ -38,11 +33,11 @@ public class BaseUITest
     [SetUp]
     public void FactoryDriverTest()
     {
-        //Logger.Error("Error level...");
+        
         Driver = new Browser().Driver;
 
         _navigationSteps = new NavigationSteps(Driver);
-        //WaitsHelper = new WaitsHelper(Driver, TimeSpan.FromSeconds(Configurator.WaitsTimeout));
+        
         Admin = Configurator.Admin;
 
         Driver.Navigate().GoToUrl(Configurator.AppSettings.URL);

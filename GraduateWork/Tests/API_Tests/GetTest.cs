@@ -7,7 +7,6 @@ using Allure.Net.Commons;
 
 namespace GraduateWork.Tests.API_Tests
 {
-    //[AllureSuite("API_Tests")]
     public class GetTest : BaseApiTest 
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();

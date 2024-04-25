@@ -1,6 +1,4 @@
-﻿
-
-using GraduateWork.Models;
+﻿using GraduateWork.Models;
 using System.Text.Json.Serialization;
 
 namespace GraduateWork.Models;
