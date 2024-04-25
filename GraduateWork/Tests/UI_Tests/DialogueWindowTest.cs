@@ -1,21 +1,27 @@
-﻿using GraduateWork.Pages;
+﻿using Allure.NUnit.Attributes;
+using GraduateWork.Pages;
 using GraduateWork.Steps;
 
 namespace GraduateWork.Tests.UI_Tests
 {
+    [AllureSuite("UI DialogueWindow Test")]
     public class DialogueWindowTest : BaseUITest
     {
         [Test]
+        [Category("Smoke")]
+        [Category("Regression")]
         public void _DialogueWindowTest()
         {
-            UserSteps userSteps = new(Driver);
-            ProjectsPage projectsPage = userSteps.LoginByCorrect_User(); //логин
-            Assert.That(projectsPage.IsPageOpened); //страница projectsPage открыта
+            _navigationSteps
+                .SuccessfulLogin(Admin);
+            _navigationSteps
+                .NavigateToProjectsPage()
+                ._PlusProjectButton.Click();
 
-            ActionsSteps actionsSteps = new(Driver);
-            AddProjectPage addProjectPage = actionsSteps.PlusProjectButtonClick(); //клик по кнопке Project
-            Assert.That(addProjectPage.IsPageOpened); //страница addProjectPage открыта
-            Assert.That(addProjectPage.DialogueWindowIsDisplayed);
+            Assert.That(_navigationSteps
+                .NavigateAddProjectPage()
+                .DialogueWindowIsDisplayed); 
+            
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using System.Reflection;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using LogLevel = OpenQA.Selenium.LogLevel;
@@ -17,6 +16,7 @@ public class DriverFactory
         chromeOptions.AddArguments("--disable-gpu");
         chromeOptions.AddArguments("--disable-extensions");
         chromeOptions.AddArguments("--headless");
+        chromeOptions.AddArguments("--remote-debugging-pipe");
 
         chromeOptions.SetLoggingPreference(LogType.Browser, LogLevel.All);
         chromeOptions.SetLoggingPreference(LogType.Driver, LogLevel.All);

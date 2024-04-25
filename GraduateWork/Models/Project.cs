@@ -1,13 +1,9 @@
-﻿
-using GraduateWork.Models;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
+﻿using System.Text.Json.Serialization;
 
 namespace GraduateWork.Models;
 
 public record Project
 {
-    // [JsonPropertyName("result")] public List<Project> Result { get; set; } = new();
     [JsonPropertyName("id")] public int Id { get; set; }
     [JsonPropertyName("name")] public string? Name { get; set; }
     [JsonPropertyName("note")] public string? Note { get; set; }

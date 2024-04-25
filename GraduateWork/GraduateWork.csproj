@@ -7,11 +7,13 @@
 
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <None Remove="allureConfig.json" />
 	  <None Remove="appsettings.json" />
+	  <None Remove="C:\Users\greck\.nuget\packages\nlog.schema\5.2.8\contentFiles\any\any\NLog.xsd" />
 	  <None Remove="NLog.config" />
 	  <None Remove="Resources\cat_time.jpg" />
 	  <None Remove="Resources\schema.json" />
@@ -59,17 +61,12 @@
 		<PackageReference Include="RestSharp" Version="110.2.0" />
 		<PackageReference Include="Selenium.Support" Version="4.19.0" />
 		<PackageReference Include="Selenium.WebDriver" Version="4.19.0" />
-		<PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="123.0.6312.12200" />
 		<PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
 		<PackageReference Include="WebDriverManager" Version="2.17.2" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Using Include="NUnit.Framework" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Fakers\" />
 	</ItemGroup>
 
 </Project>

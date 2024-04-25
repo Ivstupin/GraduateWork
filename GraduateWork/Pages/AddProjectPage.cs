@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace GraduateWork.Pages
 {
-    public class AddProjectPage : BasePage
+    public class AddProjectPage(IWebDriver? driver, bool openByURL = false) : BasePage(driver, openByURL)
     {
         private static string END_POINT = "";
 
@@ -14,19 +14,14 @@ namespace GraduateWork.Pages
         private static readonly By CounterBy = By.ClassName("maxlength-counter__counter"); //счётчик введённых символов в поле Summary
         private static readonly By NameInputFieldBy = By.CssSelector("[placeholder='Project name']");
         private static readonly By NameLabelBy = By.XPath("//*[contains(text(),'Name')]");
-        private static readonly By AddProjectButtonBy = By.CssSelector("[data-target='submitButton']"); //бэйдж с количеством товаров в тележке
-
-        public AddProjectPage(IWebDriver driver, bool openPageByUrl = false) : base(driver, openPageByUrl)
-        {
-            
-        }
-
+        private static readonly By AddProjectButtonBy = By.CssSelector("[data-target='submitButton']"); 
+                                                                                                        
         protected override string GetEndpoint()
         {
             return END_POINT;
         }
 
-        public override bool IsPageOpened()
+        protected override bool EvaluateLoadedStatus()
         {
             Console.WriteLine(TitleLabelSummary.Text.Trim());
             return TitleLabelSummary.Text.Trim().Equals("Summary");
