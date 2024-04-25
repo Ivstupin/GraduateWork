@@ -1,10 +1,11 @@
-﻿using GraduateWork.Models;
+﻿using Allure.NUnit.Attributes;
+using GraduateWork.Models;
 using GraduateWork.Pages;
 using GraduateWork.Steps;
 
 namespace GraduateWork.Tests.UI_Tests
 {
-    
+    [AllureSuite("UI BoundaryValues Test")]
     public class BoundaryValuesTest : BaseUITest
     {
         readonly BoundaryValues boundaryValues = new BoundaryValues();

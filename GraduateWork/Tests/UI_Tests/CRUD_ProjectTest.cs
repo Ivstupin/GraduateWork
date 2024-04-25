@@ -6,6 +6,7 @@ using GraduateWork.Steps;
 
 namespace GraduateWork.Tests.UI_Tests
 {
+    [AllureSuite("UI CRUD Test")]
     public class CRUD_ProjectTest : BaseUITest
     {
         [Test]

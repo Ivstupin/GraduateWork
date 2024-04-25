@@ -1,9 +1,11 @@
-﻿using GraduateWork.Models;
+﻿using Allure.NUnit.Attributes;
+using GraduateWork.Models;
 
 namespace GraduateWork.Tests.UI_Tests;
 
 public class FailedTest : BaseUITest
 {
+    [AllureSuite("UI Failed Test")]
     [Test]
     [Description("Падение теста обработано логгером")]
     [Category("Regression")]
@@ -30,11 +32,11 @@ public class FailedTest : BaseUITest
     {
         Assert.That(
             _navigationSteps
-                .SuccessfulLogin(new User
+                .IncorrectLogin(new User
                 {
                     Email = Admin.Email,
-                    Password = Admin.Password //+ "wrng_psw"
+                    Password = Admin.Password + "wrng_psw"
                 })
-                .PopupMessage.Displayed);
+                .ErrorTextIsVisible());
     }
 }

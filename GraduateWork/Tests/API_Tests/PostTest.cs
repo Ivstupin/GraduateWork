@@ -5,7 +5,8 @@ using System.Net;
 
 namespace GraduateWork.Tests.API_Tests
 {
-        public class PostTest : BaseApiTest 
+    [AllureSuite("API PostTest")]
+    public class PostTest : BaseApiTest 
     {
         private AutomationRun _automationRun = new();
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();

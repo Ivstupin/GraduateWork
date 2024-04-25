@@ -1,7 +1,9 @@
-﻿using GraduateWork.Models;
+﻿using Allure.NUnit.Attributes;
+using GraduateWork.Models;
 
 namespace GraduateWork.Tests.UI_Tests;
 
+[AllureSuite("UI LoginTest Test")]
 public class LoginTest : BaseUITest
 {
     [Test]

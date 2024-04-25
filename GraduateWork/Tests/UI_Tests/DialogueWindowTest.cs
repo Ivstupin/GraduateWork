@@ -1,8 +1,10 @@
-﻿using GraduateWork.Pages;
+﻿using Allure.NUnit.Attributes;
+using GraduateWork.Pages;
 using GraduateWork.Steps;
 
 namespace GraduateWork.Tests.UI_Tests
 {
+    [AllureSuite("UI DialogueWindow Test")]
     public class DialogueWindowTest : BaseUITest
     {
         [Test]
