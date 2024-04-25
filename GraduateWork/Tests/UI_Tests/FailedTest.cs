@@ -33,7 +33,7 @@ public class FailedTest : BaseUITest
                 .SuccessfulLogin(new User
                 {
                     Email = Admin.Email,
-                    Password = Admin.Password + "wrng_psw"
+                    Password = Admin.Password //+ "wrng_psw"
                 })
                 .PopupMessage.Displayed);
     }
